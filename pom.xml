@@ -24,5 +24,6 @@
   </dependencies>
   <modules>
   	<module>pumpmyskycore</module>
+  	<module>pumpmyskybukkit</module>
   </modules>
 </project>
