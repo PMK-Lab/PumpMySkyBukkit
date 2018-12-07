@@ -1,3 +1,4 @@
 [submodule "PumpMySkyCore"]
 	path = PumpMySkyCore
-	url = https://github.com/PMK-Lab/PumpMySkyCore
+	url = https://github.com/PMK-Lab/PumpMySkyCore.git
+	branch = master
