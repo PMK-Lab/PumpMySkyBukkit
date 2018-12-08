@@ -1,5 +1,7 @@
 package fr.pumpmyskybukkit;
 
+import java.io.File;
+
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class MainSky extends JavaPlugin{
@@ -8,7 +10,16 @@ public class MainSky extends JavaPlugin{
 	public void onEnable() {
 		super.onEnable();
 		
+		File file = new File(getDataFolder(), "islands");
+		initIslandFolder(file);
 		
+	}
+	
+	private void initIslandFolder(File f) {
+		
+		if(!f.exists()) {
+			f.mkdir();
+		}
 		
 	}
 	
