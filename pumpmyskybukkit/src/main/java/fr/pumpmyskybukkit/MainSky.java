@@ -4,22 +4,19 @@ import java.io.File;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+import fr.pumpmyskycore.IslandManager;
+import fr.pumpmyskycore.IslandManager.IslandConstant;
+
 public class MainSky extends JavaPlugin{
 
 	@Override
 	public void onEnable() {
 		super.onEnable();
 		
-		File file = new File(getDataFolder(), "islands");
-		initIslandFolder(file);
+		File file = new File(getDataFolder(), IslandConstant.ISLAND_FOLDER_NAME);
+		IslandManager.initIslandFolder(file);
 		
-	}
-	
-	private void initIslandFolder(File f) {
 		
-		if(!f.exists()) {
-			f.mkdir();
-		}
 		
 	}
 	
