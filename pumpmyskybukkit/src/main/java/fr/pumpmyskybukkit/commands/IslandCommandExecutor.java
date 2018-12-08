@@ -30,7 +30,7 @@ public class IslandCommandExecutor implements CommandExecutor {
 				String sub = args[0];
 				
 				System.out.println("Sub command");
-				for (SubData s : this.subCommandList) {
+				for (SubCommandData s : this.subCommandList) {
 					
 					String subCmd = s.getSubCommand();
 					String permission = s.getPermissionNode();
@@ -73,21 +73,21 @@ public class IslandCommandExecutor implements CommandExecutor {
 		
 	}
 	
-	private List<SubData> subCommandList;
+	private List<SubCommandData> subCommandList;
 	
 	public void addSubCommand(String sub , String perm , ISubCommand i) {
 		
-		this.subCommandList.add(new SubData(sub, perm, i));
+		this.subCommandList.add(new SubCommandData(sub, perm, i));
 		
 	}
 	
 	public void addSubCommand(String sub , ISubCommand i) {
 		
-		this.subCommandList.add(new SubData(sub, i));
+		this.subCommandList.add(new SubCommandData(sub, i));
 		
 	}
 
-	public List<SubData> getSubCommandList() {
+	public List<SubCommandData> getSubCommandList() {
 		return subCommandList;
 	}
 	
