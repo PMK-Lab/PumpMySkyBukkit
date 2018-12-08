@@ -26,7 +26,7 @@ public class BukkitIslandManager extends IslandManager<Player>{
 			
 		}
 		
-		return null;
+		return Island.create(player.getUniqueId());
 		
 	}
 
