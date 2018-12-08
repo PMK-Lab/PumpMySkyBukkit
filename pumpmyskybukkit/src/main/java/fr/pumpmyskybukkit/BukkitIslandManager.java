@@ -45,8 +45,15 @@ public class BukkitIslandManager extends IslandManager<Player>{
 	}
 
 	@Override
-	public void playerAddIsland(Island island, Player player) {
-		// TODO Auto-generated method stub
+	public void playerAddIsland(Island island, Player player) throws PlayerDoesNotHaveIslandException {
+		
+		if(!this.playerHasIsland(player)) {
+			
+			throw new PlayerDoesNotHaveIslandException(player.getUniqueId());
+			
+		}
+		
+		island.add(player.getUniqueId());
 		
 	}
 
