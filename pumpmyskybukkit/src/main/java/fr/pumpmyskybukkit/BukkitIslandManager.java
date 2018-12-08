@@ -60,7 +60,18 @@ public class BukkitIslandManager extends IslandManager<Player>{
 
 	@Override
 	public void playerRemoveIsland(Island island, Player player) {
-		// TODO Auto-generated method stub
+		
+		if(!this.playerHasIsland(player)) {
+			
+			throw new PlayerDoesNotHaveIslandException(player.getUniqueId());
+			
+		}else if(!this.playerGetIsland(player).equals(island)) {
+			
+			throw new PlayerNotInThisIsland(player.getUniqueId(), this.playerGetIsland(player) , island);
+			
+		}
+		
+		island.remove(player.getUniqueId());
 		
 	}
 
