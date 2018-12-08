@@ -59,7 +59,7 @@ public class BukkitIslandManager extends IslandManager<Player>{
 	}
 
 	@Override
-	public void playerRemoveIsland(Island island, Player player) {
+	public void playerRemoveIsland(Island island, Player player) throws PlayerDoesNotHaveIslandException, PlayerNotInThisIsland {
 		
 		if(!this.playerHasIsland(player)) {
 			
