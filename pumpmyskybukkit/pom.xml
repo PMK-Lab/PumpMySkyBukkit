@@ -23,6 +23,12 @@
             <artifactId>bukkit</artifactId>
             <scope>provided</scope>
 		</dependency>
+		
+		<dependency>
+			<groupId>fr.pmk_lab</groupId>
+			<artifactId>pumpmyskycore</artifactId>
+			<version>${project.version}</version>
+		</dependency>
   		
   	</dependencies>
   
