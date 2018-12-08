@@ -1,11 +1,6 @@
 package fr.pumpmyskybukkit;
 
-import java.io.File;
-
 import org.bukkit.plugin.java.JavaPlugin;
-
-import fr.pumpmyskycore.IslandManager;
-import fr.pumpmyskycore.IslandManager.IslandConstant;
 
 public class MainSky extends JavaPlugin{
 
