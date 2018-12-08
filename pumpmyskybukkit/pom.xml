@@ -10,7 +10,21 @@
   	
   	<name>PumpMySkyBukkit</name>
   	
-  	  
+	<dependencies>
+  			
+  		<dependency>
+           	<groupId>org.spigotmc</groupId>
+           	<artifactId>spigot-api</artifactId>
+           	<scope>provided</scope>
+		</dependency>
+		<!--Bukkit API-->
+		<dependency>
+            <groupId>org.bukkit</groupId>
+            <artifactId>bukkit</artifactId>
+            <scope>provided</scope>
+		</dependency>
+  		
+  	</dependencies>
   
   
 </project>
