@@ -10,9 +10,13 @@ public class MainSky extends JavaPlugin{
 	public void onEnable() {
 		super.onEnable();
 		
-		File file = new File(getDataFolder(), IslandConstant.ISLAND_FOLDER_NAME);
-		IslandManager.initIslandFolder(file);
+		saveDefaultConfig();
 		
+		this.islandManager = new BukkitIslandManager(this);
+		
+		this.getServer().getPluginManager().registerEvents(new SkyListeners(this.islandManager), this);
+		
+		//this.getCommand("island").setExecutor(executor);
 		
 		
 	}
