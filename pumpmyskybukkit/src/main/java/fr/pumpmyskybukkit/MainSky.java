@@ -4,6 +4,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class MainSky extends JavaPlugin{
 
+	private BukkitIslandManager islandManager;
+	
 	@Override
 	public void onEnable() {
 		super.onEnable();
