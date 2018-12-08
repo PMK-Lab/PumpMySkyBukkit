@@ -29,4 +29,8 @@ public class MainSky extends JavaPlugin{
 		
 	}
 	
+	public BukkitIslandManager getIslandManager() {
+		return this.islandManager;
+	}
+	
 }
