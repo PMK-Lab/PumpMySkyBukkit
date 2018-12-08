@@ -29,13 +29,13 @@ public class BukkitIslandManager extends IslandManager<Player>{
 	}
 
 	@Override
-	public void playerSetIsland(Player player) {
+	public void playerAddIsland(Island island, Player player) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void playerUnsetIsland(Player player) {
+	public void playerRemoveIsland(Island island, Player player) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -51,7 +51,6 @@ public class BukkitIslandManager extends IslandManager<Player>{
 		// TODO Auto-generated method stub
 		
 	}
-
 	
 	
 }
