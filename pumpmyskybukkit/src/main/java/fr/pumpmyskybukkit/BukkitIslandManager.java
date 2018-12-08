@@ -19,7 +19,7 @@ public class BukkitIslandManager extends IslandManager<Player>{
 	}
 
 	@Override
-	public Island createIsland(Player player) throws PlayerAlreadyHaveIslandException {
+	public Island createIsland(Player player) throws PlayerAlreadyHaveIslandException, PlayerDoesNotHaveIslandException {
 		
 		if(this.playerHasIsland(player)) {
 			
