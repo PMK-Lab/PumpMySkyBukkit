@@ -1,5 +1,7 @@
 package fr.pumpmyskybukkit;
 
+import java.io.IOException;
+
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class MainSky extends JavaPlugin{
