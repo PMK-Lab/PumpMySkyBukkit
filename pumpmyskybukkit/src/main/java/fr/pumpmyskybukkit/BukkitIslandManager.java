@@ -1,5 +1,7 @@
 package fr.pumpmyskybukkit;
 
+import java.io.IOException;
+
 import org.bukkit.entity.Player;
 
 import fr.pumpmyskycore.Island;
