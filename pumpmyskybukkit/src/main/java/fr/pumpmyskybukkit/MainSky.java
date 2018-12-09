@@ -14,7 +14,13 @@ public class MainSky extends JavaPlugin{
 		
 		saveDefaultConfig();
 		
-		this.islandManager = new BukkitIslandManager(this);
+		try {
+			this.islandManager = new BukkitIslandManager(this);
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+			this.getServer().shutdown();
+		}
 		
 		this.getServer().getPluginManager().registerEvents(new SkyListeners(this.islandManager), this);
 		
