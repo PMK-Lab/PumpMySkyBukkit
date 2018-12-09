@@ -14,7 +14,7 @@ public class BukkitIslandManager extends IslandManager<Player>{
 
 	protected MainSky main;
 	
-	public BukkitIslandManager(MainSky main) {
+	public BukkitIslandManager(MainSky main) throws IOException {
 		super(main.getDataFolder().toPath());
 		
 		this.main = main;
