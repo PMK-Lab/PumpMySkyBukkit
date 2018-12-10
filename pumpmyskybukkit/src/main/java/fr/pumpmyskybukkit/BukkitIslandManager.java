@@ -17,6 +17,10 @@ public class BukkitIslandManager extends IslandManager<Player>{
 		this.main = main;
 		
 	}
+	
+	public MainSky getMain() {
+		return this.main;
+	}
 
 	@Override
 	public UUID getMinecraftUUID(Player player) {
