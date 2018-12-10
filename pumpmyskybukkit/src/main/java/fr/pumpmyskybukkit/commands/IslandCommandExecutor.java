@@ -23,14 +23,12 @@ public class IslandCommandExecutor implements CommandExecutor, TabCompleter {
 			
 			if( args.length < 1 ) {
 				
-				System.out.println("No sub command");
 				return new GoToIslandCmd().onSubCommand(p, cmd);
 				
 			}else {
 				
 				String sub = args[0];
 				
-				System.out.println("Sub command");
 				for (SubCommandData s : this.subCommandList) {
 					
 					String subCmd = s.getSubCommand();
@@ -44,7 +42,7 @@ public class IslandCommandExecutor implements CommandExecutor, TabCompleter {
 							return true;
 							
 						}else {
-							// permission trouv�
+							// permission trouvé
 							System.out.println("Executor sub command : " + s.getSubCommandExecutor().getClass().getName());
 							return s.execute(p, cmd, getArgs(args));
 							
@@ -54,7 +52,6 @@ public class IslandCommandExecutor implements CommandExecutor, TabCompleter {
 					
 				}
 				
-				System.out.println("Sub command no found");
 				return new HelpIslandCmd().onSubCommand(p, cmd);
 				
 			}
