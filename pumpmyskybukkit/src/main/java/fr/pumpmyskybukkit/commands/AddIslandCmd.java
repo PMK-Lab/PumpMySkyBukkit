@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
@@ -110,6 +111,21 @@ public class AddIslandCmd implements ISubCommand, TabCompleter {
 			return true;
 		}
 		*/
+	}
+
+	@Override
+	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+		
+		List<String> l = new ArrayList<>();
+		
+		for (OfflinePlayer offlinePlayer : this.main.getServer().getOfflinePlayers()) {
+			
+			l.add(offlinePlayer.getName());
+			
+		}
+		
+		return l;
+		
 	}
 	
 	/*
