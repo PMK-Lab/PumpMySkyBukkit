@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+import fr.pumpmyskybukkit.commands.IslandCommandExecutor;
+
 public class MainSky extends JavaPlugin{
 
 	private BukkitIslandManager islandManager;
