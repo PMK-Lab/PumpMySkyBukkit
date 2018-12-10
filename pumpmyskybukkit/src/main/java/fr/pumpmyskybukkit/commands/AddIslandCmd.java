@@ -13,6 +13,12 @@ import fr.pumpmyskybukkit.MainSky;
 
 public class AddIslandCmd implements ISubCommand, TabCompleter {
 
+	private MainSky main;
+	
+	public AddIslandCmd(MainSky m) {
+		this.main = m;
+	}
+	
 	@Override
 	public boolean onSubCommand(Player sender, Command cmd, List<String> args) {
 		return false;
