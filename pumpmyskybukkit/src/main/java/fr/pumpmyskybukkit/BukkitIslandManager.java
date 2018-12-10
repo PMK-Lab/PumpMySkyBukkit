@@ -5,7 +5,6 @@ import java.util.UUID;
 
 import org.bukkit.entity.Player;
 
-import fr.pumpmyskycore.Island;
 import fr.pumpmyskycore.IslandManager;
 
 public class BukkitIslandManager extends IslandManager<Player>{
