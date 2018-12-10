@@ -12,11 +12,11 @@ import org.bukkit.entity.Player;
 import fr.pumpmyskybukkit.BukkitIslandManager;
 
 public class AddIslandCmd implements ISubCommand, TabCompleter {
-
-	private MainSky main;
 	
-	public AddIslandCmd(MainSky m) {
-		this.main = m;
+	private BukkitIslandManager manager;
+	
+	public AddIslandCmd(BukkitIslandManager manager) {
+		this.manager = manager;
 	}
 	
 	@Override
