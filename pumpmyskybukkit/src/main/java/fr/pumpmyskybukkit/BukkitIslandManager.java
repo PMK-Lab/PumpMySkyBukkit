@@ -7,8 +7,6 @@ import org.bukkit.entity.Player;
 
 import fr.pumpmyskycore.Island;
 import fr.pumpmyskycore.IslandManager;
-import fr.pumpmyskycore.exceptions.PlayerDoesNotHaveIslandException;
-import fr.pumpmyskycore.exceptions.PlayerNotInThisIsland;
 
 public class BukkitIslandManager extends IslandManager<Player>{
 
