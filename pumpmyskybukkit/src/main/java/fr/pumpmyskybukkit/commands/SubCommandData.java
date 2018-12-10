@@ -24,6 +24,13 @@ public class SubCommandData {
 		this.iSubCommand = i;
 	}
 	
+	@Override
+	public String toString() {
+		
+		return this.subCommand;
+		
+	}
+	
 	public boolean execute(Player sender , Command cmd , List<String> args) {
 		
 		return this.iSubCommand.onSubCommand(sender, cmd, args);
