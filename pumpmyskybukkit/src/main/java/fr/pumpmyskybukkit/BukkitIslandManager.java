@@ -20,18 +20,6 @@ public class BukkitIslandManager extends IslandManager<Player>{
 	}
 
 	@Override
-	public boolean playerHasIsland(Player player) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public void deleteIsland(Island i) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public UUID getMinecraftUUID(Player player) {
 		return player.getUniqueId();
 	}
