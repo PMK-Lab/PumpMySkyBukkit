@@ -21,44 +21,7 @@ public class BukkitIslandManager extends IslandManager<Player>{
 		
 	}
 
-	@Override
-	public Island createIsland(Player player) throws PlayerAlreadyHaveIslandException, PlayerDoesNotHaveIslandException {
-		
-		if(this.playerHasIsland(player)) {
-			
-			throw new PlayerAlreadyHaveIslandException(player.getUniqueId(), this.playerGetIsland(player));
-			
-		}
-		
-		return Island.create(player.getUniqueId());
-		
-	}
-
-	@Override
-	public Island playerGetIsland(Player player) throws PlayerDoesNotHaveIslandException {
-		
-		if(!this.playerHasIsland(player)) {
-			
-			throw new PlayerDoesNotHaveIslandException(player.getUniqueId());
-			
-		}
-		
-		return Island.get(player.getUniqueId());
-		
-	}
-
-	@Override
-	public void playerAddIsland(Island island, Player player) throws PlayerDoesNotHaveIslandException {
-		
-		if(!this.playerHasIsland(player)) {
-			
-			throw new PlayerDoesNotHaveIslandException(player.getUniqueId());
-			
-		}
-		
-		island.add(player.getUniqueId());
-		
-	}
+	
 
 	@Override
 	public void playerRemoveIsland(Island island, Player player) throws PlayerDoesNotHaveIslandException, PlayerNotInThisIsland {
