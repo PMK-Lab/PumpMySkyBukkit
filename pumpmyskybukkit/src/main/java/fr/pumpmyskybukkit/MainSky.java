@@ -26,7 +26,10 @@ public class MainSky extends JavaPlugin{
 		
 		this.getServer().getPluginManager().registerEvents(new SkyListeners(this.islandManager), this);
 		
-		//this.getCommand("island").setExecutor(executor);
+		IslandCommandExecutor islandCommandExecutor = new IslandCommandExecutor();
+		//islandCommandExecutor.addSubCommand(sub, i);
+		
+		this.getCommand("island").setExecutor(islandCommandExecutor);
 		
 		
 	}
