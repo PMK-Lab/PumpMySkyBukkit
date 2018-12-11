@@ -5,12 +5,40 @@ import java.util.List;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 
+import fr.pumpmyskybukkit.BukkitIslandManager;
+import fr.pumpmyskycore.exceptions.PlayerAlreadyHaveIslandException;
+import fr.pumpmyskycore.exceptions.PlayerDoesNotHaveIslandException;
+
 public class CreateIslandCmd implements ISubCommand {
+
+	private BukkitIslandManager manager;
+
+	public CreateIslandCmd(BukkitIslandManager islandManager) {
+		
+		this.manager = islandManager;
+		
+	}
 
 	@Override
 	public boolean onSubCommand(Player sender, Command cmd, List<String> args) {
-		return false;
-		// TODO Auto-generated method stub
+		
+		try {
+			
+			this.manager.createIsland(sender);
+			sender.sendMessage("Ile créée, cliquez pour tp");
+			
+		} catch (PlayerAlreadyHaveIslandException e) {
+			
+			sender.sendMessage("Vous possedez déjà une ile !");
+			
+		} catch (PlayerDoesNotHaveIslandException e) {
+			
+			sender.sendMessage("ERROR !!!! Envoyez le message suivant au staff : " + e.getClass().getName() + " || " + e.getPlayerUUID());
+			
+		}
+		
+		return true;
+		
 		/*
 		IslandManager is = MainOzone.getIslandManager();
 		
