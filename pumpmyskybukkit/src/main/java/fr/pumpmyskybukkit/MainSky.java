@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import fr.pumpmyskybukkit.commands.CreateIslandCmd;
 import fr.pumpmyskybukkit.commands.IslandCommandExecutor;
 
 public class MainSky extends JavaPlugin{
@@ -23,13 +24,14 @@ public class MainSky extends JavaPlugin{
 			
 			e.printStackTrace();
 			this.getServer().shutdown();
+			return;
 			
 		}
 		
 		this.getServer().getPluginManager().registerEvents(new SkyListeners(this.islandManager), this);
 		
 		IslandCommandExecutor islandCommandExecutor = new IslandCommandExecutor();
-		//islandCommandExecutor.addSubCommand(sub, i);
+		islandCommandExecutor.addSubCommand("create", new CreateIslandCmd(this.islandManager));
 		
 		this.getCommand("island").setExecutor(islandCommandExecutor);
 		
