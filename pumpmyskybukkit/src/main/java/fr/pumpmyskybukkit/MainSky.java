@@ -2,6 +2,7 @@ package fr.pumpmyskybukkit;
 
 import java.io.IOException;
 
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.pumpmyskybukkit.commands.IslandCommandExecutor;
@@ -18,10 +19,11 @@ public class MainSky extends JavaPlugin{
 		
 		try {
 			this.islandManager = new BukkitIslandManager(this);
-		} catch (IOException e) {
+		} catch (IOException | InvalidConfigurationException e) {
 			
 			e.printStackTrace();
 			this.getServer().shutdown();
+			
 		}
 		
 		this.getServer().getPluginManager().registerEvents(new SkyListeners(this.islandManager), this);
