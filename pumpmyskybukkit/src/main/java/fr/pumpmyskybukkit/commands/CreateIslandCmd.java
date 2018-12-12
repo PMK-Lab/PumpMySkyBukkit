@@ -38,7 +38,8 @@ public class CreateIslandCmd implements ISubCommand {
 			
 		} catch (PlayerAlreadyHaveIslandException e) {
 			
-			sender.sendMessage("Vous possedez déjà une ile !");
+			sender.sendMessage(IslandConstant.ISLAND_CHAT_PREFIX + "§r§c Vous faites parti / possédez déjà une ile (" + e.getIsland().getName() + " )");
+			this.teleportIslandChatMessage(sender);
 			
 		} catch (PlayerDoesNotHaveIslandException e) {
 			
