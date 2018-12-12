@@ -6,7 +6,6 @@ import java.util.List;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 
-import fr.pumpmyskybukkit.BukkitIslandManager;
 import fr.pumpmyskycore.IslandManager.IslandManagerConstant;
 import fr.pumpmyskycore.exceptions.PlayerAlreadyHaveIslandException;
 import fr.pumpmyskycore.exceptions.PlayerDoesNotHaveIslandException;
