@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 
 public class HelpIslandCmd implements ISubCommand {
 
+	@SuppressWarnings("unused")
 	private static List<String> helpList = new ArrayList<String>();
 	
 	@Override
