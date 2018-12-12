@@ -25,7 +25,10 @@ public class CreateIslandCmd implements ISubCommand {
 		try {
 			
 			this.manager.createIsland(sender);
-			sender.sendMessage("Ile créée, cliquez pour tp");
+			
+			sender.sendMessage(IslandConstant.ISLAND_CHAT_PREFIX +"§d Ile créée avec succès !");
+			this.teleportIslandChatMessage(sender);
+			
 			
 		} catch (PlayerAlreadyHaveIslandException e) {
 			
