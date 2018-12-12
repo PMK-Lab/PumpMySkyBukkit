@@ -55,14 +55,7 @@ public class CreateIslandCmd implements ISubCommand {
 		return true;
 		
 	}
-/*
-	@Override
-	public void aide(Player p) {
-		// TODO Auto-generated method stub
-		p.sendMessage(Island.prefix + "�r�c Vous faites parti / poss�dez d�j� une ile.");
-		
-	}
-	*/
+
 	public void teleportIslandChatMessage(Player p) {
 		
 		TextComponent ici = new TextComponent("ICI");
