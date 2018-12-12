@@ -22,7 +22,7 @@ public class CreateIslandCmd implements ISubCommand {
 		
 		try {
 			
-			this.manager.createIsland(sender);
+			executor.getIslandManager().createIsland(sender);
 			
 			sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX +"§d Ile créée avec succès !");
 			this.teleportIslandChatMessage(sender);
