@@ -145,5 +145,9 @@ public class IslandCommandExecutor implements CommandExecutor, TabCompleter {
 		return new ArrayList<>();
 		
 	}
+
+	public BukkitIslandManager getIslandManager() {
+		return this.islandManager;
+	}
 	
 }
