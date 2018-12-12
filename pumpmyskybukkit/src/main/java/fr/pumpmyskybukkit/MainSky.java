@@ -30,6 +30,7 @@ public class MainSky extends JavaPlugin{
 		}
 		
 		this.getServer().getPluginManager().registerEvents(new SkyListeners(this.islandManager), this);
+
 		
 		IslandCommandExecutor islandCommandExecutor = new IslandCommandExecutor();
 		islandCommandExecutor.addSubCommand("create", new CreateIslandCmd(this.islandManager));
