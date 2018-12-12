@@ -36,7 +36,7 @@ public class CreateIslandCmd implements ISubCommand {
 			
 		} catch (PlayerDoesNotHaveIslandException e) {
 			
-			sender.sendMessage("ERROR !!!! Envoyez le message suivant au staff : " + e.getClass().getName() + " || " + e.getPlayerUUID());
+			sender.sendMessage("§cERROR !!!! Envoyez le message suivant au staff : " + e.getClass().getName() + " || " + e.getPlayerUUID());
 			
 		}
 		
