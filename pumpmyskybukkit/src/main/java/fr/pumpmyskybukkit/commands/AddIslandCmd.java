@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
-import fr.pumpmyskybukkit.BukkitIslandManager;
+import fr.pumpmyskybukkit.MainSky;
 
 public class AddIslandCmd implements ISubCommand, TabCompleter {
 	
