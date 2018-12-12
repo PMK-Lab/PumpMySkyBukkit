@@ -54,7 +54,7 @@ public class IslandCommandExecutor implements CommandExecutor, TabCompleter {
 					
 				}
 				
-				return new HelpIslandCmd().onSubCommand(p, cmd);
+				return new HelpIslandCmd().onSubCommand(this,p, cmd);
 				
 			}
 			
