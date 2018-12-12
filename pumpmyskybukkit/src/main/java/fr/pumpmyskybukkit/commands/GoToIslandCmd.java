@@ -6,10 +6,13 @@ import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 
 public class GoToIslandCmd implements ISubCommand{
-
+	
 	@Override
 	public boolean onSubCommand(IslandCommandExecutor exec, Player sender, Command cmd, List<String> args) {
 		return false;
+		
+		
+		
 		/*
 		IslandManager is = MainOzone.getIslandManager();
 		
