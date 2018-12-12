@@ -117,7 +117,7 @@ public class AddIslandCmd implements ISubCommand, TabCompleter {
 		
 		List<String> l = new ArrayList<>();
 		
-		for (OfflinePlayer offlinePlayer : this.manager.getMain().getServer().getOfflinePlayers()) {
+		for (OfflinePlayer offlinePlayer : this.main.getServer().getOfflinePlayers()) {
 			
 			l.add(offlinePlayer.getName());
 			
