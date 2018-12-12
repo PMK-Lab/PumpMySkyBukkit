@@ -7,6 +7,6 @@ import org.bukkit.entity.Player;
 
 public interface ISubCommand {
 	
-	public boolean onSubCommand(Player sender, Command cmd, List<String> args);
+	public boolean onSubCommand(IslandCommandExecutor exec,Player sender, Command cmd, List<String> args);
 	
 }

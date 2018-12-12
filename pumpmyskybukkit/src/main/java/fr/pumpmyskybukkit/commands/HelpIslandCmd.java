@@ -11,7 +11,7 @@ public class HelpIslandCmd implements ISubCommand {
 	private static List<String> helpList = new ArrayList<String>();
 	
 	@Override
-	public boolean onSubCommand(Player sender, Command cmd, List<String> args) {
+	public boolean onSubCommand(IslandCommandExecutor exec, Player sender, Command cmd, List<String> args) {
 		/*
 		sender.sendMessage("�3�l=======�r�b PumpMyAide�r�3�l =======");
 		
@@ -26,9 +26,9 @@ public class HelpIslandCmd implements ISubCommand {
 		return true;
 	}
 	
-	public boolean onSubCommand(Player sender, Command cmd) {
+	public boolean onSubCommand(IslandCommandExecutor exec, Player sender, Command cmd) {
 		
-		return this.onSubCommand(sender, cmd, null);
+		return this.onSubCommand(exec,sender, cmd, null);
 		
 	}
 	

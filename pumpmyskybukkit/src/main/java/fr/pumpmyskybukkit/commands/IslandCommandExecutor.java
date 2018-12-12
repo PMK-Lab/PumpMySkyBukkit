@@ -23,7 +23,7 @@ public class IslandCommandExecutor implements CommandExecutor, TabCompleter {
 			
 			if( args.length < 1 ) {
 				
-				return new GoToIslandCmd().onSubCommand(p, cmd);
+				return new GoToIslandCmd().onSubCommand(this,p, cmd);
 				
 			}else {
 				
@@ -44,7 +44,7 @@ public class IslandCommandExecutor implements CommandExecutor, TabCompleter {
 						}else {
 							// permission trouvé
 							System.out.println("Executor sub command : " + s.getSubCommandExecutor().getClass().getName());
-							return s.execute(p, cmd, getArgs(args));
+							return s.execute(this,p, cmd, getArgs(args));
 							
 						}
 						

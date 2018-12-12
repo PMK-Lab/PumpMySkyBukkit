@@ -11,7 +11,7 @@ public class ResetIslandCmd implements ISubCommand {
 	private static ArrayList<String> confirmUUIDList = new ArrayList<>();
 	
 	@Override
-	public boolean onSubCommand(Player sender, Command cmd, List<String> args) {
+	public boolean onSubCommand(IslandCommandExecutor exec, Player sender, Command cmd, List<String> args) {
 		return false;
 		/*
 		IslandManager is = MainOzone.getIslandManager();

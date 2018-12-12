@@ -31,9 +31,9 @@ public class SubCommandData {
 		
 	}
 	
-	public boolean execute(Player sender , Command cmd , List<String> args) {
+	public boolean execute(IslandCommandExecutor islandCommandExecutor, Player sender , Command cmd , List<String> args) {
 		
-		return this.iSubCommand.onSubCommand(sender, cmd, args);
+		return this.iSubCommand.onSubCommand(islandCommandExecutor,sender, cmd, args);
 		
 	}
 

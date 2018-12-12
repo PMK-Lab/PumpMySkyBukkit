@@ -18,16 +18,8 @@ import net.md_5.bungee.api.chat.TextComponent;
 
 public class CreateIslandCmd implements ISubCommand {
 
-	private BukkitIslandManager manager;
-
-	public CreateIslandCmd(BukkitIslandManager islandManager) {
-		
-		this.manager = islandManager;
-		
-	}
-
 	@Override
-	public boolean onSubCommand(Player sender, Command cmd, List<String> args) {
+	public boolean onSubCommand(IslandCommandExecutor executor,Player sender, Command cmd, List<String> args) {
 		
 		try {
 			

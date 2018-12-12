@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 public class KickIslandCmd implements ISubCommand {
 
 	@Override
-	public boolean onSubCommand(Player sender, Command cmd, List<String> args) {
+	public boolean onSubCommand(IslandCommandExecutor exec, Player sender, Command cmd, List<String> args) {
 		return false;
 		/*
 		IslandManager is = MainOzone.getIslandManager();

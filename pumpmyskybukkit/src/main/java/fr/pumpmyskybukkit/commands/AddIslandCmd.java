@@ -20,7 +20,7 @@ public class AddIslandCmd implements ISubCommand, TabCompleter {
 	}
 	
 	@Override
-	public boolean onSubCommand(Player sender, Command cmd, List<String> args) {
+	public boolean onSubCommand(IslandCommandExecutor exec, Player sender, Command cmd, List<String> args) {
 		return false;
 		// TODO Auto-generated method stub
 		/*

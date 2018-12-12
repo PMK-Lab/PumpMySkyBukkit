@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 public class GoToIslandCmd implements ISubCommand{
 
 	@Override
-	public boolean onSubCommand(Player sender, Command cmd, List<String> args) {
+	public boolean onSubCommand(IslandCommandExecutor exec, Player sender, Command cmd, List<String> args) {
 		return false;
 		/*
 		IslandManager is = MainOzone.getIslandManager();
@@ -31,9 +31,9 @@ public class GoToIslandCmd implements ISubCommand{
 		*/
 	}
 
-	public boolean onSubCommand(Player p, Command cmd) {
+	public boolean onSubCommand(IslandCommandExecutor exec,Player p, Command cmd) {
 		// TODO Auto-generated method stub
-		return onSubCommand(p, cmd, null);
+		return onSubCommand(exec,p, cmd, null);
 	}
 /*
 	@Override
