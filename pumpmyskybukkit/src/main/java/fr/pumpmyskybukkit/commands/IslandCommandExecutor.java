@@ -67,13 +67,15 @@ public class IslandCommandExecutor implements CommandExecutor, TabCompleter {
 		
 	}
 	
-	public IslandCommandExecutor() {
+	public IslandCommandExecutor(BukkitIslandManager manager) {
 		
 		this.subCommandList = new ArrayList<>();
+		this.islandManager = manager;
 		
 	}
 	
 	private List<SubCommandData> subCommandList;
+	private BukkitIslandManager islandManager;
 	
 	public void addSubCommand(String sub , String perm , ISubCommand i) {
 		
