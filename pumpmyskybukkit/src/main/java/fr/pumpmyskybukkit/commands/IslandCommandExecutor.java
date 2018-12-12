@@ -9,6 +9,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
+import fr.pumpmyskybukkit.BukkitIslandManager;
+
 public class IslandCommandExecutor implements CommandExecutor, TabCompleter {
 
 	public static final String NO_PERM = "Vous n'avez pas la permission de faire cela !";
