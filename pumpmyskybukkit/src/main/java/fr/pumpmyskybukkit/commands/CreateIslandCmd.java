@@ -65,7 +65,6 @@ public class CreateIslandCmd implements ISubCommand {
 		
 		msg.addExtra(msg1);		
 		
-		p.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX +"§d Ile créée avec succès !");
 		p.spigot().sendMessage(msg);
 		
 	}
