@@ -30,18 +30,6 @@ public class BukkitIslandManager extends IslandManager<Player>{
 	public UUID getMinecraftUUID(Player player) {
 		return player.getUniqueId();
 	}
-
-	@Override
-	public Island getIsland(File f) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Island getIsland(IslandLocation l) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	
 }
