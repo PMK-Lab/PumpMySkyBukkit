@@ -110,17 +110,17 @@ public class IslandCommandExecutor implements CommandExecutor, TabCompleter {
 	@Override
 	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
 		
-		if(args.length == 0) {
+		List<String> subCmdNameList = new ArrayList<>();
+		
+		for (SubCommandData subcmd : this.subCommandList) {
 			
-			List<String> l = new ArrayList<>();
+			subCmdNameList.add(subcmd.getSubCommand());
 			
-			for (SubCommandData subcmd : this.subCommandList) {
-				
-				l.add(subcmd.getSubCommand());
-				
-			}
+		}
+		
+		if(args.length == 1) {
 			
-			return l;
+			return subCmdNameList;
 			
 		}else if(args.length == 1) {
 			
