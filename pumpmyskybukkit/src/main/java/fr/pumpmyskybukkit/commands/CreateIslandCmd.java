@@ -46,24 +46,19 @@ public class CreateIslandCmd implements ISubCommand {
 		return true;
 		
 	}
-
-	public void teleportIslandChatMessage(Player p) {
+	
+	public void createIslandChatMessage(Player p) {
 		
 		TextComponent ici = new TextComponent("ICI");
 		ici.setBold(true);
 		ici.setColor(ChatColor.DARK_AQUA);
-		ici.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/is goto"));
+		ici.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/is create"));
 		
-		ici.setHoverEvent( new HoverEvent( HoverEvent.Action.SHOW_TEXT, new ComponentBuilder( "§3§lTéléportation vers votre île !" ).create() ) );
+		ici.setHoverEvent( new HoverEvent( HoverEvent.Action.SHOW_TEXT, new ComponentBuilder( "§3§lPour créer votre île !" ).create() ) );
 		
-		TextComponent msg = new TextComponent("Cliquez ");
+		TextComponent msg = new TextComponent("Pour créer votre île, cliquez ");
 		msg.setColor(ChatColor.AQUA);
 		msg.addExtra(ici);
-		
-		TextComponent msg1 = new TextComponent(" pour vous y téléporter !");
-		msg1.setColor(ChatColor.AQUA);
-		
-		msg.addExtra(msg1);		
 		
 		p.spigot().sendMessage(msg);
 		
