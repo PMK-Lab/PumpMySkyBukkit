@@ -45,33 +45,6 @@ public class GoToIslandCmd implements ISubCommand{
 		// TODO Auto-generated method stub
 		return onSubCommand(exec,p, cmd, null);
 	}
-/*
-	@Override
-	public void aide(Player p) {
-		// TODO Auto-generated method stub
-		
-		p.sendMessage(Island.prefix + "�r�c Sans �le, vous ne pouvez pas vous t�l�porter � celle-ci !");
-		
-	}
-	
-	public void aide1(Player p) {
-		
-		TextComponent ici = new TextComponent("ICI");
-		ici.setBold(true);
-		ici.setColor(ChatColor.DARK_AQUA);
-		ici.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/is create"));
-		
-		ici.setHoverEvent( new HoverEvent( HoverEvent.Action.SHOW_TEXT, new ComponentBuilder( "�3�lPour cr�er votre �le !" ).create() ) );
-		
-		TextComponent msg = new TextComponent("Pour cr�er votre �le, cliquez ");
-		msg.setColor(ChatColor.AQUA);
-		msg.addExtra(ici);
-		
-		p.spigot().sendMessage(msg); // clique = aide create island
-		
-	}
-	
-*/	
 	
 	public void teleportIslandChatMessage(Player p) {
 		
