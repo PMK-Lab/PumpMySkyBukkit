@@ -26,17 +26,13 @@ public class InfoIslandCmd implements ISubCommand {
 			
 			sender.sendMessage("	§a█§r§f Home( x:" + island.getHomeX() + " | y:" + island.getHomeY() + " | z:" + island.getHomeZ() + " )");
 			
-			String members = "[ ";
+			sender.sendMessage(" 	§a█§r§f Membres :");
 			
 			for (String string : island.getMembersList()) {
 				
-				members += manager.getMain().getServer().getOfflinePlayer(UUID.fromString(string)).getName() + " ";
+				sender.sendMessage("   §a»§r§f" + manager.getMain().getServer().getOfflinePlayer(UUID.fromString(string)).getName());
 				
 			}
-			
-			members += "]";
-			
-			sender.sendMessage(" 	§a█§r§f Membres " + members);
 			
 		} catch (PlayerDoesNotHaveIslandException e) {
 			
