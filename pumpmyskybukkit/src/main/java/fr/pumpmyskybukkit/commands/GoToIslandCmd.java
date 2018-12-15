@@ -71,5 +71,27 @@ public class GoToIslandCmd implements ISubCommand{
 	}
 	
 */	
+	
+	public void teleportIslandChatMessage(Player p) {
+		
+		TextComponent ici = new TextComponent("ICI");
+		ici.setBold(true);
+		ici.setColor(ChatColor.DARK_AQUA);
+		ici.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/is goto"));
+		
+		ici.setHoverEvent( new HoverEvent( HoverEvent.Action.SHOW_TEXT, new ComponentBuilder( "§3§lTéléportation vers votre île !" ).create() ) );
+		
+		TextComponent msg = new TextComponent("Cliquez ");
+		msg.setColor(ChatColor.AQUA);
+		msg.addExtra(ici);
+		
+		TextComponent msg1 = new TextComponent(" pour vous y téléporter !");
+		msg1.setColor(ChatColor.AQUA);
+		
+		msg.addExtra(msg1);		
+		
+		p.spigot().sendMessage(msg);
+		
+	}
 
 }
