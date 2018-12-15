@@ -121,11 +121,31 @@ public class IslandCommandExecutor implements CommandExecutor, TabCompleter {
 		
 		if(args.length == 1) {
 			
-			return subCmdNameList;
+			String arg = args[0];
 			
-		}else if(args.length == 2 & subCmdNameList.contains(args[0])) {
+			if(arg.trim().isEmpty()) {
+				
+				return subCmdNameList;
+				
+			}else {
+				
+				for (Iterator<String> iterator = subCmdNameList.iterator(); iterator.hasNext();) {
+					
+					String string = iterator.next();
+					
+					if(!string.startsWith(arg)) {
+						
+						iterator.remove();
+						
+					}
+					
+				}
+				
+				return subCmdNameList;
+				
+			}
 			
-			
+		}else if(args.length == 2 & subCmdNameList.contains(args[0])) {			
 			
 			String subcommand = args[0];
 			
