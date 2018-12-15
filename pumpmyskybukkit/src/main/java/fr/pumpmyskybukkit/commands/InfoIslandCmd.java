@@ -36,7 +36,7 @@ public class InfoIslandCmd implements ISubCommand {
 			
 		} catch (PlayerDoesNotHaveIslandException e) {
 			
-			sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX + "§r§c Sans île, vous ne pouvez pas vous téléporter à celle-ci !");
+			sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX + "§r§c Vous ne possedez ou ne faite parti d'aucune ile !");
 			new CreateIslandCmd().createIslandChatMessage(sender);
 			
 		}
