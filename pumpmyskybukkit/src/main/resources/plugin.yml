@@ -1,4 +1,8 @@
 name: PumpMySkyBukkit
-version: v1.0
+version: 1.0
 author: Clem_Fern
 main: fr.pumpmyskybukkit.MainSky
+commands:
+  island:
+    aliases: is
+    
