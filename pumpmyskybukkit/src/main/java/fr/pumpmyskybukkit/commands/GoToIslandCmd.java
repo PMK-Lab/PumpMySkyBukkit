@@ -21,29 +21,24 @@ public class GoToIslandCmd implements ISubCommand{
 	
 	@Override
 	public boolean onSubCommand(IslandCommandExecutor exec, Player sender, Command cmd, List<String> args) {
-		return false;
 		
+		BukkitIslandManager manager = exec.getIslandManager();
 		
-		
-		/*
-		IslandManager is = MainOzone.getIslandManager();
-		
-		if(is.playerHasIsland(sender)) {
-			// t�l�portation
+		try {
 			
-			Island island = MainOzone.getIslandManager().getIsland(sender);
+			Island island = manager.playerGetIsland(sender);
 			
-			sender.teleport(new Location(Bukkit.getWorld("Void"), island.getSpawnX(), island.getSpawnY(), island.getSpawnZ()));
-			return true;
+			sender.teleport(new Location(Bukkit.getWorld("Void"), island.getHomeX(), island.getHomeY(), island.getHomeZ()));
 			
-		}else {
-			// affichage aide
-			aide(sender);
-			aide1(sender);
-			return false;
+		} catch (PlayerDoesNotHaveIslandException e) {
+			
+			sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX + "§r§c Sans île, vous ne pouvez pas vous téléporter à celle-ci !");
+			new CreateIslandCmd().createIslandChatMessage(sender);
 			
 		}
-		*/
+		
+		return true;		
+		
 	}
 
 	public boolean onSubCommand(IslandCommandExecutor exec,Player p, Command cmd) {
