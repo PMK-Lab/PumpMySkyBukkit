@@ -7,6 +7,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import fr.pumpmyskybukkit.commands.CreateIslandCmd;
 import fr.pumpmyskybukkit.commands.GoToIslandCmd;
+import fr.pumpmyskybukkit.commands.InfoIslandCmd;
 import fr.pumpmyskybukkit.commands.IslandCommandExecutor;
 
 public class MainSky extends JavaPlugin{
