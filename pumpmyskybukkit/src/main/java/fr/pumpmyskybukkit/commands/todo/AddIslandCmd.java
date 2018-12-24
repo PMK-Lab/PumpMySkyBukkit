@@ -1,4 +1,4 @@
-package fr.pumpmyskybukkit.commands;
+package fr.pumpmyskybukkit.commands.todo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +10,8 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
 import fr.pumpmyskybukkit.MainSky;
+import fr.pumpmyskybukkit.commands.ISubCommand;
+import fr.pumpmyskybukkit.commands.IslandCommandExecutor;
 
 public class AddIslandCmd implements ISubCommand, TabCompleter {
 	

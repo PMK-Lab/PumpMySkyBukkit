@@ -11,6 +11,7 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
 import fr.pumpmyskybukkit.BukkitIslandManager;
+import fr.pumpmyskybukkit.commands.todo.HelpIslandCmd;
 
 public class IslandCommandExecutor implements CommandExecutor, TabCompleter {
 
