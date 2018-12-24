@@ -33,7 +33,9 @@ public class MainSky extends JavaPlugin{
 
 		
 		IslandCommandExecutor islandCommandExecutor = new IslandCommandExecutor(this.islandManager);
+		
 		islandCommandExecutor.addSubCommand("create", new CreateIslandCmd());
+		
 		islandCommandExecutor.addSubCommand("goto", new GoToIslandCmd());
 		
 		this.getCommand("island").setExecutor(islandCommandExecutor);

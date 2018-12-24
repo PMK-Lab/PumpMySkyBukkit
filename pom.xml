@@ -52,12 +52,6 @@
             	<version>1.8.8-R0.1-SNAPSHOT</version>
             	<scope>provided</scope>
 			</dependency>
-			
-			<dependency>
-            	<groupId>org.yaml</groupId>
-            	<artifactId>snakeyaml</artifactId>
-            	<version>1.23</version>
-        	</dependency>
   		
   		</dependencies>
   	
