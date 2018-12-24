@@ -1,6 +1,7 @@
 package fr.pumpmyskybukkit.commands;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.bukkit.command.Command;
@@ -110,19 +111,41 @@ public class IslandCommandExecutor implements CommandExecutor, TabCompleter {
 	@Override
 	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
 		
-		if(args.length == 0) {
+		List<String> subCmdNameList = new ArrayList<>();
+		
+		for (SubCommandData subcmd : this.subCommandList) {
 			
-			List<String> l = new ArrayList<>();
+			subCmdNameList.add(subcmd.getSubCommand());
 			
-			for (SubCommandData subcmd : this.subCommandList) {
+		}
+		
+		if(args.length == 1) {
+			
+			String arg = args[0];
+			
+			if(arg.trim().isEmpty()) {
 				
-				l.add(subcmd.getSubCommand());
+				return subCmdNameList;
+				
+			}else {
+				
+				for (Iterator<String> iterator = subCmdNameList.iterator(); iterator.hasNext();) {
+					
+					String string = iterator.next();
+					
+					if(!string.startsWith(arg)) {
+						
+						iterator.remove();
+						
+					}
+					
+				}
+				
+				return subCmdNameList;
 				
 			}
 			
-			return l;
-			
-		}else if(args.length == 1) {
+		}else if(args.length == 2 & subCmdNameList.contains(args[0])) {			
 			
 			String subcommand = args[0];
 			
