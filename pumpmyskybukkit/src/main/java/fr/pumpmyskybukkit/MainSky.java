@@ -9,6 +9,7 @@ import fr.pumpmyskybukkit.commands.CreateIslandCmd;
 import fr.pumpmyskybukkit.commands.GoToIslandCmd;
 import fr.pumpmyskybukkit.commands.InfoIslandCmd;
 import fr.pumpmyskybukkit.commands.IslandCommandExecutor;
+import fr.pumpmyskybukkit.commands.LeaveIslandCmd;
 
 public class MainSky extends JavaPlugin{
 
@@ -35,9 +36,10 @@ public class MainSky extends JavaPlugin{
 		
 		IslandCommandExecutor islandCommandExecutor = new IslandCommandExecutor(this.islandManager);
 		
-		islandCommandExecutor.addSubCommand("create", new CreateIslandCmd());
-		
+		islandCommandExecutor.addSubCommand("create", new CreateIslandCmd());		
 		islandCommandExecutor.addSubCommand("goto", new GoToIslandCmd());
+		islandCommandExecutor.addSubCommand("info", new InfoIslandCmd());
+		islandCommandExecutor.addSubCommand("leave", new LeaveIslandCmd());
 		
 		this.getCommand("island").setExecutor(islandCommandExecutor);
 		
