@@ -35,7 +35,8 @@ public class LeaveIslandCmd implements ISubCommand {
 			
 		} catch (PlayerDoesNotHaveIslandException e) {
 			
-			sender.sendMessage("§cERROR !!!! Envoyez le message suivant au staff : " + e.getClass().getName() + " || " + e.getPlayerUUID());
+			sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX + "§r§c Vous ne possedez ou ne faite parti d'aucune ile !");
+			new CreateIslandCmd().createIslandChatMessage(sender);
 			
 		} catch (IslandIsNotEmptyException e) {
 			
