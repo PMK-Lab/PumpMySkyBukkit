@@ -24,9 +24,9 @@ public class InfoIslandCmd implements ISubCommand {
 			
 			sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX + "§r§f " + island.getName() + "(§r§7§o" + manager.getMain().getServer().getOfflinePlayer(UUID.fromString(island.getOwner())).getName() + "§r§f)");
 			
-			sender.sendMessage("	§a█§r§f Home( x:" + island.getHomeX() + " | y:" + island.getHomeY() + " | z:" + island.getHomeZ() + " )");
+			sender.sendMessage("  §a█§r§f Home( x:" + island.getHomeX() + " | y:" + island.getHomeY() + " | z:" + island.getHomeZ() + " )");
 			
-			sender.sendMessage(" 	§a█§r§f Membres :");
+			sender.sendMessage("  §a█§r§f Membres :");
 			
 			for (String string : island.getMembersList()) {
 				
