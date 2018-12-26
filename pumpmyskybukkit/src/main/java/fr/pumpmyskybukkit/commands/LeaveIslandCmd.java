@@ -14,74 +14,42 @@ public class LeaveIslandCmd implements ISubCommand {
 
 	@Override
 	public boolean onSubCommand(IslandCommandExecutor exec, Player sender, Command cmd, List<String> args) {
-		return false;
-		/*
-		IslandManager is = MainOzone.getIslandManager();
 		
-		if(is.playerHasIsland(sender)) {
-			// t�l�portation
+		try {
 			
-			Island island = MainOzone.getIslandManager().getIsland(sender);
+			boolean purge = exec.getIslandManager().playerLeaveIsland(sender);
 			
-			if(island.getOwnerUUID().equals(sender.getUniqueId().toString())) {
+			if(purge) {
 				
-				if(island.getPlayerList().size() != 0) {
-					
-					//impossible de quitter
-					aide1(sender);
-					return true;
-					
-				}				
+				sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX +"§d Ile détruite !");
 				
-				island.setOwnerUUID("none");
+			}else {
 				
-			}
-			//quitter
-			sender.sendMessage(Island.prefix + "�r�d Vous venez de quitter votre �le !");
-			sender.teleport(new Location(Bukkit.getWorld("Void"), -29, 84, -480));
-			
-			for (Iterator<String> i = island.getPlayerList().iterator(); i.hasNext();) {
-				
-				if(i.next().equals(sender.getUniqueId().toString()))
-					i.remove();
+				sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX +"§d Vous avez quitté votre ile !");	
 				
 			}
 			
-			try {
-				island.save();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			new CreateIslandCmd().createIslandChatMessage(sender);
+			// join message
 			
-			try {
-				IslandManager.unsetIsland(sender);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 			
-			return true;
+		} catch (PlayerDoesNotHaveIslandException e) {
 			
-		}else {
-			// affichage aide
-			aide(sender);
-			new GoToIslandCmd().aide1(sender);
-			return false;
+			sender.sendMessage("§cERROR !!!! Envoyez le message suivant au staff : " + e.getClass().getName() + " || " + e.getPlayerUUID());
+			
+		} catch (IslandIsNotEmptyException e) {
+			
+			sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX +"§c Des membres sont encore présent dans votre île !");
+			
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+			sender.sendMessage("§cERROR !!!! Envoyez le message suivant au staff : " + e.getClass().getName() + " || " + e.getMessage());
 			
 		}
-		*/
-	}
-/*
-	@Override
-	public void aide(Player p) {
-		// TODO Auto-generated method stub
-		p.sendMessage(Island.prefix + "�r�c Vous devez avoir une �le pour pouvoir la quitter !");
+		
+		return true;
+		
 	}
 	
-	public void aide1(Player p) {
-		// TODO Auto-generated method stub
-		p.sendMessage(Island.prefix + "�r�c Vous etes le cr�ateur de cette ile, ne laissez pas tomber vos co�quipiers !");
-	}
-*/
 }
