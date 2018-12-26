@@ -10,6 +10,9 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 
 import fr.pumpmyskybukkit.MainSky;
+import fr.pumpmyskycore.Island;
+import fr.pumpmyskycore.IslandManager.IslandManagerConstant;
+import fr.pumpmyskycore.exceptions.PlayerDoesNotHaveIslandException;
 
 public class InviteIslandCmd implements ISubCommand, TabCompleter {
 
