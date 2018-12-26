@@ -8,6 +8,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import fr.pumpmyskybukkit.commands.CreateIslandCmd;
 import fr.pumpmyskybukkit.commands.GoToIslandCmd;
 import fr.pumpmyskybukkit.commands.InfoIslandCmd;
+import fr.pumpmyskybukkit.commands.InviteIslandCmd;
 import fr.pumpmyskybukkit.commands.IslandCommandExecutor;
 import fr.pumpmyskybukkit.commands.LeaveIslandCmd;
 
@@ -40,6 +41,8 @@ public class MainSky extends JavaPlugin{
 		islandCommandExecutor.addSubCommand("goto", new GoToIslandCmd());
 		islandCommandExecutor.addSubCommand("info", new InfoIslandCmd());
 		islandCommandExecutor.addSubCommand("leave", new LeaveIslandCmd());
+		
+		islandCommandExecutor.addSubCommand("invite", new InviteIslandCmd(this));
 		
 		this.getCommand("island").setExecutor(islandCommandExecutor);
 		
