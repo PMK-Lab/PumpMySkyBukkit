@@ -47,7 +47,7 @@ public class IslandCommandExecutor implements CommandExecutor, TabCompleter {
 							
 						}else {
 							// permission trouvé
-							System.out.println("Executor sub command : " + s.getSubCommandExecutor().getClass().getName());
+							//System.out.println("Executor sub command : " + s.getSubCommandExecutor().getClass().getName());
 							return s.execute(this,p, cmd, getArgs(args));
 							
 						}
