@@ -11,6 +11,7 @@ import fr.pumpmyskybukkit.commands.InfoIslandCmd;
 import fr.pumpmyskybukkit.commands.InviteIslandCmd;
 import fr.pumpmyskybukkit.commands.IslandCommandExecutor;
 import fr.pumpmyskybukkit.commands.LeaveIslandCmd;
+import fr.pumpmyskybukkit.commands.UninviteIslandCmd;
 
 public class MainSky extends JavaPlugin{
 
