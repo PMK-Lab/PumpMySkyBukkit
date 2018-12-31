@@ -112,6 +112,9 @@ public class IslandCommandExecutor implements CommandExecutor, TabCompleter {
 	@Override
 	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
 		
+		if(!(sender instanceof Player))
+			return new ArrayList<>();
+		
 		List<String> subCmdNameList = new ArrayList<>();
 		
 		for (SubCommandData subcmd : this.subCommandList) {
