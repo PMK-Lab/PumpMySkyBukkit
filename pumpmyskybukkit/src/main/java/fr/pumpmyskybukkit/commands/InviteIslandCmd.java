@@ -56,17 +56,28 @@ public class InviteIslandCmd implements ISubCommand, SubTabCompleter {
 	}
 
 	@Override
-	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+	public List<String> onTabComplete(IslandCommandExecutor exec, CommandSender sender, Command command, String alias, String[] args) {
 		
-		ArrayList<String> l = new ArrayList<>();
+		Player player = (Player) sender;
+		BukkitIslandManager manager = exec.getIslandManager();
 		
-		for (OfflinePlayer offlinePlayer : this.main.getServer().getOfflinePlayers()) {
+		if(manager.playerIsOwner(player)) {
 			
-			l.add(offlinePlayer.getName());
+			ArrayList<String> l = new ArrayList<>();
+			
+			for (OfflinePlayer offlinePlayer : this.main.getServer().getOfflinePlayers()) {						
+				
+				l.add(offlinePlayer.getName());
+				
+			}
+			
+			return l;
+			
+		}else {
+			
+			return new ArrayList<>();
 			
 		}
-		
-		return l;
 		
 	}
 
