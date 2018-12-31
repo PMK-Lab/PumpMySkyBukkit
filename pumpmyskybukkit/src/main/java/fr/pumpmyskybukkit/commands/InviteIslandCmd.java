@@ -40,16 +40,41 @@ public class InviteIslandCmd implements ISubCommand, SubTabCompleter {
 			
 			if(player != null) {
 				
+				try {
+					
+					manager.playerInviteIsland(sender, (Player) player);
+					
+					if(player.isOnline()) {
+						
+						player.getPlayer().sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX + "§r§d " + sender.getName() + " vous a invité à rejoindre son ile !");
+						
+					}
+					
+				} catch (PlayerDoesNotHaveIslandException e) {
+					
+					sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX + "§r§c Vous ne possedez ou ne faite parti d'aucune ile !");
+					new CreateIslandCmd().createIslandChatMessage(sender);
+					
+				} catch (RestrictActionToOwnerIslandException e) {
+					
+					sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX + "§r§c Vous devez être le créateur de l'lie pour faire cela !");
+					
+				} catch (PlayerAlreadyInvited e) {
+					
+					sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX + "§r§c Vous avez déjà invité ce joueur à rejoindre votre ile !");
+					
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				
 			}else {
 				
+				sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX + "§r§c Synthaxe invalide : /is invite <player>");
 				
-				
-			}
-				
-				
-		
-		
+			}		
+			
+		}
 		
 		return true;
 		
