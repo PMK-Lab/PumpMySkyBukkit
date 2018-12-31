@@ -16,7 +16,7 @@ import fr.pumpmyskycore.exceptions.PlayerAlreadyInvited;
 import fr.pumpmyskycore.exceptions.PlayerDoesNotHaveIslandException;
 import fr.pumpmyskycore.exceptions.RestrictActionToOwnerIslandException;
 
-public class InviteIslandCmd implements ISubCommand, TabCompleter {
+public class InviteIslandCmd implements ISubCommand, SubTabCompleter {
 
 	private MainSky main;
 
