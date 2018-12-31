@@ -28,12 +28,14 @@ public class UninviteIslandCmd implements ISubCommand, SubTabCompleter {
 	@Override
 	public boolean onSubCommand(IslandCommandExecutor exec, Player sender, Command cmd, List<String> args) {
 		
-		if(args.isEmpty()) {
-			// show list of current invite
-						
+		if(args.isEmpty() | args.size() != 1) {
+			// invalide syntax			
+			sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX + "§r§c Synthaxe invalide : /is uninvite <player>");						
 			
 		}else {
 			
+			BukkitIslandManager manager = exec.getIslandManager();			
+			OfflinePlayer player = manager.getOfflinePlayerByName(args.get(0));
 			
 			
 		}
