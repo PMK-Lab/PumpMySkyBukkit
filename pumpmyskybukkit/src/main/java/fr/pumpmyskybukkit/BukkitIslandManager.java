@@ -3,6 +3,7 @@ package fr.pumpmyskybukkit;
 import java.io.IOException;
 import java.util.UUID;
 
+import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
 
