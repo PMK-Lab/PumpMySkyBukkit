@@ -29,5 +29,19 @@ public class BukkitIslandManager extends IslandManager<Player>{
 		return player.getUniqueId();
 	}
 	
+	public OfflinePlayer getOfflinePlayerByName(String name) {
+		
+		for (OfflinePlayer offlinePlayer : this.main.getServer().getOfflinePlayers()) {
+			
+			if(offlinePlayer.getName().equals(name)) {
+				return offlinePlayer;
+			}
+			
+		}
+		
+		return null;
+		
+	}
+	
 	
 }
