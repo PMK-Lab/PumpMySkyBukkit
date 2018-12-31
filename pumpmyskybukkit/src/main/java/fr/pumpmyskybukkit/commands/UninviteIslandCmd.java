@@ -15,7 +15,7 @@ import fr.pumpmyskycore.exceptions.PlayerDoesNotHaveIslandException;
 import fr.pumpmyskycore.exceptions.PlayerDoesNotInvited;
 import fr.pumpmyskycore.exceptions.RestrictActionToOwnerIslandException;
 
-public class UninviteIslandCmd implements ISubCommand, TabCompleter {
+public class UninviteIslandCmd implements ISubCommand, SubTabCompleter {
 
 	private MainSky main;
 
