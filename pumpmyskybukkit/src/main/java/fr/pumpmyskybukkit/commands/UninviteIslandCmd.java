@@ -80,18 +80,10 @@ public class UninviteIslandCmd implements ISubCommand, SubTabCompleter {
 	}
 
 	@Override
-	public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
-		
-		ArrayList<String> l = new ArrayList<>();
-		
-		for (OfflinePlayer offlinePlayer : this.main.getServer().getOfflinePlayers()) {
-			
-			l.add(offlinePlayer.getName());
-			
-		}
-		
-		return l;
-		
+	public List<String> onTabComplete(IslandCommandExecutor exec, CommandSender sender, Command command, String alias,
+			String[] args) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
