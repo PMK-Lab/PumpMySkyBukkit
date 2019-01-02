@@ -1,10 +1,18 @@
 package fr.pumpmyskybukkit.commands;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+
 import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class JoinIslandCmd implements ISubCommand {
+import fr.pumpmyskybukkit.BukkitIslandManager;
+import fr.pumpmyskycore.Island;
+import fr.pumpmyskycore.IslandManager.IslandManagerConstant;
+
+public class JoinIslandCmd implements ISubCommand, SubTabCompleter {
 
 	@Override
 	public boolean onSubCommand(IslandCommandExecutor exec, Player sender, Command cmd, List<String> args) {
