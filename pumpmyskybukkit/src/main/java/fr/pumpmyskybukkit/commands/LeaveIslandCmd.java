@@ -58,4 +58,26 @@ public class LeaveIslandCmd implements ISubCommand {
 		
 	}
 	
+	public void leaveIslandChatMessage(Player player) {
+		
+		TextComponent ici = new TextComponent("ICI");
+		ici.setBold(true);
+		ici.setColor(ChatColor.DARK_AQUA);
+		ici.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/is leave"));
+		
+		ici.setHoverEvent( new HoverEvent( HoverEvent.Action.SHOW_TEXT, new ComponentBuilder( "§3§lCommande \"is leave\"" ).create() ) );
+		
+		TextComponent msg = new TextComponent("Cliquez ");
+		msg.setColor(ChatColor.AQUA);
+		msg.addExtra(ici);
+		
+		TextComponent msg1 = new TextComponent(" pour quitter votre ile !");
+		msg1.setColor(ChatColor.AQUA);
+		
+		msg.addExtra(msg1);		
+		
+		player.spigot().sendMessage(msg);
+		
+	}
+	
 }
