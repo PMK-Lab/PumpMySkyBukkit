@@ -9,6 +9,11 @@ import org.bukkit.entity.Player;
 import fr.pumpmyskycore.IslandManager.IslandManagerConstant;
 import fr.pumpmyskycore.exceptions.IslandIsNotEmptyException;
 import fr.pumpmyskycore.exceptions.PlayerDoesNotHaveIslandException;
+import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 
 public class LeaveIslandCmd implements ISubCommand {
 
