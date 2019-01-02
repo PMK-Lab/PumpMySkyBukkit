@@ -16,6 +16,36 @@ public class JoinIslandCmd implements ISubCommand, SubTabCompleter {
 
 	@Override
 	public boolean onSubCommand(IslandCommandExecutor exec, Player sender, Command cmd, List<String> args) {
+		
+		BukkitIslandManager manager = exec.getIslandManager();
+		
+		if(args.size() != 1) {
+			
+			sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX + "§r§c Synthaxe invalide : /is join <player>");
+			
+		}else {
+			
+			if(manager.playerHasIsland(sender)) {
+				
+				sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX + "§r§c Vous faites déjà parti d'une ile !");
+				new LeaveIslandCmd().leaveIslandChatMessage(sender);
+				
+			}else {
+				
+				if(this.onTabComplete(exec, sender, cmd, null, null).contains(args.get(0))) {
+					
+					//manager.playerJoinIsland(island, player);
+					
+				}else {
+					
+					sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX + "§r§c Joueur invalide : /is join <player>");
+					
+				}
+				
+			}
+			
+		}
+		
 		return false;
 		// TODO Auto-generated method stub
 		/*
