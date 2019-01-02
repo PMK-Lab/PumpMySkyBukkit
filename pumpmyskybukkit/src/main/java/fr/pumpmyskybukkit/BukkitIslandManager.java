@@ -9,7 +9,7 @@ import org.bukkit.entity.Player;
 
 import fr.pumpmyskycore.IslandManager;
 
-public class BukkitIslandManager extends IslandManager<Player>{
+public class BukkitIslandManager extends IslandManager<OfflinePlayer>{
 
 	protected MainSky main;
 	
@@ -25,7 +25,7 @@ public class BukkitIslandManager extends IslandManager<Player>{
 	}
 
 	@Override
-	public UUID getMinecraftUUID(Player player) {
+	public UUID getMinecraftUUID(OfflinePlayer player) {
 		return player.getUniqueId();
 	}
 	
