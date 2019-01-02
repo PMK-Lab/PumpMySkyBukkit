@@ -47,6 +47,28 @@ public class JoinIslandCmd implements ISubCommand, SubTabCompleter {
 		}
 		
 		return false;
+	}
+	
+	@Override
+	public List<String> onTabComplete(IslandCommandExecutor exec, CommandSender sender, Command command, String alias, String[] args) {
+		
+		BukkitIslandManager manager = exec.getIslandManager();
+		
+		List<String> invitersName = new ArrayList<String>();
+		
+		for (Island island : manager.getIslandInvites().getPlayerInvites(((Player) sender).getUniqueId())) {
+			
+			invitersName.add(manager.getMain().getServer().getOfflinePlayer(UUID.fromString(island.getOwner())).getName());
+			
+		}
+		
+		return invitersName;
+		
+	}
+	
+}
+
+
 		// TODO Auto-generated method stub
 		/*
 		IslandManager is = MainOzone.getIslandManager();
@@ -149,7 +171,7 @@ public class JoinIslandCmd implements ISubCommand, SubTabCompleter {
 			return true;
 		}
 		*/
-	}
+	
 /*
 	public void aide2(Player p, List<String> l) {
 		// TODO Auto-generated method stub
@@ -192,4 +214,3 @@ public class JoinIslandCmd implements ISubCommand, SubTabCompleter {
 		p.sendMessage(Island.prefix + "§r§c Vous faites déjà parti d'un");
 	}
 */
-}
