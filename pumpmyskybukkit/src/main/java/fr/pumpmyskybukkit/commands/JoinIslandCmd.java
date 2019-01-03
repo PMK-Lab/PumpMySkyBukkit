@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -34,7 +35,9 @@ public class JoinIslandCmd implements ISubCommand, SubTabCompleter {
 				
 				if(this.onTabComplete(exec, sender, cmd, null, null).contains(args.get(0))) {
 					
-					//manager.playerJoinIsland(island, player);
+					OfflinePlayer player = manager.getOfflinePlayerByName(args.get(0));
+					
+					manager.playerJoinIsland(player);
 					
 				}else {
 					
