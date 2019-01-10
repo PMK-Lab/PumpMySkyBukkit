@@ -1,10 +1,23 @@
 package fr.pumpmyskybukkit.commands;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 
-public class KickIslandCmd implements ISubCommand {
+import fr.pumpmyplotcore.Plot;
+import fr.pumpmyplotcore.PlotManager.PlotManagerConstant;
+import fr.pumpmyplotcore.exceptions.PlayerDoesNotHavePlotException;
+import fr.pumpmyplotcore.exceptions.PlayerIsNotMemberPlotException;
+import fr.pumpmyplotcore.exceptions.RestrictActionToPlotOwnerException;
+import fr.pumpmyskybukkit.BukkitIslandManager;
+
+public class KickIslandCmd implements ISubCommand, SubTabCompleter {
+
 
 	@Override
 	public boolean onSubCommand(IslandCommandExecutor exec, Player sender, Command cmd, List<String> args) {
