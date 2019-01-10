@@ -157,7 +157,7 @@ public class IslandCommandExecutor implements CommandExecutor, TabCompleter {
 				
 				if(subcmd.getSubCommand().equalsIgnoreCase(subcommand) & subcmd.getSubCommandExecutor() instanceof SubTabCompleter) {
 					
-					return ((SubTabCompleter) subcmd.getSubCommandExecutor()).onTabComplete(this, sender, command, alias, args);
+					return ((SubTabCompleter) subcmd.getSubCommandExecutor()).onTabComplete(this, (Player) sender, command, alias, args);
 					
 				}
 				
