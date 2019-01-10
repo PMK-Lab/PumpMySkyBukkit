@@ -7,7 +7,6 @@ import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 
-import fr.pumpmyplotcore.Plot;
 import fr.pumpmyplotcore.PlotHomeLocation;
 import fr.pumpmyplotcore.PlotManager.PlotManagerConstant;
 import fr.pumpmyplotcore.exceptions.PlayerDoesNotHavePlotException;

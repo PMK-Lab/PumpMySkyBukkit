@@ -54,8 +54,10 @@ public class InviteIslandCmd implements ISubCommand, SubTabCompleter {
 					sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous avez déjà invité ce joueur à rejoindre votre ile !");
 					
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
+					sender.sendMessage("§cERROR !!!! Envoyez le message suivant au staff : " + e.getClass().getName() + " || " + e.getMessage());
+					
 				}
 				
 			}else {
