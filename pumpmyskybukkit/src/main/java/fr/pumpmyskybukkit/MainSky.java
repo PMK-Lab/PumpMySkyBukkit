@@ -43,11 +43,11 @@ public class MainSky extends JavaPlugin{
 		islandCommandExecutor.addSubCommand("info", new InfoIslandCmd());
 		islandCommandExecutor.addSubCommand("leave", new LeaveIslandCmd());
 		
-		islandCommandExecutor.addSubCommand("invite", new InviteIslandCmd(this));
-		islandCommandExecutor.addSubCommand("uninvite", new UninviteIslandCmd(this));
+		islandCommandExecutor.addSubCommand("invite", new InviteIslandCmd());
+		islandCommandExecutor.addSubCommand("uninvite", new UninviteIslandCmd());
 		
-		islandCommandExecutor.addSubCommand("join", new InviteIslandCmd(this));
-		islandCommandExecutor.addSubCommand("kick", new InviteIslandCmd(this));
+		//islandCommandExecutor.addSubCommand("join", new InviteIslandCmd(this));
+		//islandCommandExecutor.addSubCommand("kick", new InviteIslandCmd(this));
 		
 		this.getCommand("island").setExecutor(islandCommandExecutor);
 		
