@@ -1,6 +1,7 @@
 package fr.pumpmyskybukkit.commands;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.bukkit.OfflinePlayer;
@@ -72,10 +73,28 @@ public class UninviteIslandCmd implements ISubCommand, SubTabCompleter {
 	}
 
 	@Override
-	public List<String> onTabComplete(IslandCommandExecutor exec, CommandSender sender, Command command, String alias,
-			String[] args) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<String> onTabComplete(IslandCommandExecutor exec, Player sender, Command command, String alias, String[] args) {
+		
+		BukkitIslandManager manager = exec.getIslandManager();
+		
+		if(manager.playerIsOwner(sender)) {
+			
+			ArrayList<String> l = new ArrayList<>();
+			
+			for (OfflinePlayer offlinePlayer : exec.getIslandManager().getMain().getServer().getOfflinePlayers()) {						
+				
+				l.add(offlinePlayer.getName());
+				
+			}
+			
+			return l;
+			
+		}else {
+					
+			return new ArrayList<>();
+			
+		}
+		
 	}
 
 }
