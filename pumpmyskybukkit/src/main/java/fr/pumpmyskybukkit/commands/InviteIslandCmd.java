@@ -31,7 +31,7 @@ public class InviteIslandCmd implements ISubCommand, SubTabCompleter {
 			
 		if(args.size() != 1) {
 			// invalide syntax			
-			sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Synthaxe invalide : /is uninvite <player>");						
+			sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Synthaxe invalide : /is invite <player>");						
 			
 		}else {
 			
@@ -42,7 +42,7 @@ public class InviteIslandCmd implements ISubCommand, SubTabCompleter {
 				
 				try {
 					
-					manager.playerInvitePlot(sender, (Player) player);
+					manager.playerInvitePlot(sender,player);
 					
 					if(player.isOnline()) {
 						
