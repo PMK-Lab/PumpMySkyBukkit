@@ -66,7 +66,7 @@ public class BukkitIslandManager extends PlotManager<OfflinePlayer>{
 			
 		}
 		
-		Location bukkitLocation = new Location(Bukkit.getWorld("Void"), (location.getX() * PlotManagerConstant.PLOT_SIZE) + PlotManagerConstant.PLOT_SIZE / 2 , 60, (location.getX() * PlotManagerConstant.PLOT_SIZE) + PlotManagerConstant.PLOT_SIZE / 2);
+		Location bukkitLocation = new Location(Bukkit.getWorld("Void"), (location.getX() * PlotManagerConstant.PLOT_SIZE) + PlotManagerConstant.PLOT_SIZE / 2 , 60, (location.getZ() * PlotManagerConstant.PLOT_SIZE) + PlotManagerConstant.PLOT_SIZE / 2);
 		
 		Vector v = new Vector(bukkitLocation.getBlockX(), bukkitLocation.getBlockY(), bukkitLocation.getBlockZ());
 		
