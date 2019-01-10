@@ -18,7 +18,7 @@ public class UninviteIslandCmd implements ISubCommand, SubTabCompleter {
 	@Override
 	public boolean onSubCommand(IslandCommandExecutor exec, Player sender, Command cmd, List<String> args) {
 		
-		if(args.isEmpty() | args.size() != 1) {
+		if(args.size() != 1) {
 			// invalide syntax			
 			sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Synthaxe invalide : /is uninvite <player>");						
 			
