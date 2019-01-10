@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import fr.pumpmyplotcore.PlotManager.PlotManagerConstant;
@@ -13,17 +12,8 @@ import fr.pumpmyplotcore.exceptions.PlayerDoesNotHavePlotException;
 import fr.pumpmyplotcore.exceptions.PlayerDoesNotInvitedPlotException;
 import fr.pumpmyplotcore.exceptions.RestrictActionToPlotOwnerException;
 import fr.pumpmyskybukkit.BukkitIslandManager;
-import fr.pumpmyskybukkit.MainSky;
 
 public class UninviteIslandCmd implements ISubCommand, SubTabCompleter {
-
-	private MainSky main;
-
-	public UninviteIslandCmd(MainSky mainSky) {
-		
-		this.main = mainSky;
-		
-	}
 
 	@Override
 	public boolean onSubCommand(IslandCommandExecutor exec, Player sender, Command cmd, List<String> args) {
