@@ -26,11 +26,11 @@ public class LeaveIslandCmd implements ISubCommand {
 			
 			if(purge) {
 				
-				sender.spigot().sendMessage(new TextComponent(PlotManagerConstant.PLOT_CHAT_PREFIX +"§d Ile détruite !"));
+				sender.spigot().sendMessage(new ComponentBuilder(PlotManagerConstant.PLOT_CHAT_PREFIX +"§d Ile détruite !").create());
 				
 			}else {
 				
-				sender.spigot().sendMessage(new TextComponent(PlotManagerConstant.PLOT_CHAT_PREFIX +"§d Vous avez quitté votre ile !"));	
+				sender.spigot().sendMessage(new ComponentBuilder(PlotManagerConstant.PLOT_CHAT_PREFIX +"§d Vous avez quitté votre ile !").create());	
 				
 			}
 			
@@ -40,17 +40,17 @@ public class LeaveIslandCmd implements ISubCommand {
 			
 		} catch (PlayerDoesNotHavePlotException e) {
 			
-			sender.spigot().sendMessage(new TextComponent(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous ne possedez ou ne faite parti d'aucune ile !"));
+			sender.spigot().sendMessage(new ComponentBuilder(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous ne possedez ou ne faite parti d'aucune ile !").create());
 			new CreateIslandCmd().createIslandChatMessage(sender);
 			
 		} catch (PlotIsNotEmptyException e) {
 			
-			sender.spigot().sendMessage(new TextComponent(PlotManagerConstant.PLOT_CHAT_PREFIX +"§c Des membres sont encore présent dans votre île !"));
+			sender.spigot().sendMessage(new ComponentBuilder(PlotManagerConstant.PLOT_CHAT_PREFIX +"§c Des membres sont encore présent dans votre île !").create());
 			
 		} catch (IOException e) {
 			
 			e.printStackTrace();
-			sender.spigot().sendMessage(new TextComponent("§cERROR !!!! Envoyez le message suivant au staff : " + e.getClass().getName() + " || " + e.getMessage()));
+			sender.spigot().sendMessage(new ComponentBuilder("§cERROR !!!! Envoyez le message suivant au staff : " + e.getClass().getName() + " || " + e.getMessage()).create());
 			
 		}
 		
