@@ -21,130 +21,70 @@ public class KickIslandCmd implements ISubCommand, SubTabCompleter {
 
 	@Override
 	public boolean onSubCommand(IslandCommandExecutor exec, Player sender, Command cmd, List<String> args) {
-		return false;
-		/*
-		IslandManager is = MainOzone.getIslandManager();
 		
-		if(is.playerHasIsland(sender)) {
+		BukkitIslandManager manager = exec.getIslandManager();
+		
+		if(args.size() != 1) {
 			
-			Island island = MainOzone.getIslandManager().getIsland(sender);
+			sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Synthaxe invalide : /is join <player>");
 			
-			if(!sender.getUniqueId().toString().equals(island.getOwnerUUID())) {
-				new AddIslandCmd().aide4(sender);
-				return true;
+		}else {				
+					
+			OfflinePlayer player = manager.getOfflinePlayerByName(args.get(0));
+				
+			try {
+				
+				manager.playerKickPlot(sender, player);
+				
+			} catch (PlayerDoesNotHavePlotException e) {
+				
+				sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous ne possedez ou ne faite parti d'aucune ile !");
+				new CreateIslandCmd().createIslandChatMessage(sender);
+				
+			} catch (RestrictActionToPlotOwnerException e) {
+				
+				sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous devez être le créateur de l'ile pour faire cela !");
+				
+			} catch (PlayerIsNotMemberPlotException e) {
+				
+				sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Ce joueur n'est pas membre de votre ile !");
+				
+			} catch (IOException e) {
+				
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				
 			}
 			
-			List<String> l = island.getPlayerList();
-			
-			if(l.size() == 0) {
-				aide1(sender);
-				return true;
-			}
-			
-			if(args.isEmpty()) {
-				
-				aide2(sender,l);
-				return true;
-				
-			}else {
-				
-				String u = args.get(0);
-				
-				if(!l.contains(u)) {
-					
-					aide3(sender);
-					return false;
-					
-				}else {
-					
-							
-					for (Iterator<String> i = l.iterator(); i.hasNext();) {
-						
-						if(i.next().equals(u)) {
-							
-							try {
-								
-								OfflinePlayer target = MainOzone.getInstance().getServer().getOfflinePlayer(UUID.fromString(u));
-								
-								i.remove();
-								island.save();
-								
-								IslandManager.unsetIsland(target);
-								
-								sender.sendMessage(Island.prefix + "§r§d Vous avez bien exclu " + target.getName() + " de votre île !");
-								
-								if(target.isOnline()) {
-									Bukkit.getPlayer(target.getUniqueId()).teleport(new Location(Bukkit.getWorld("Void"), -29, 84, -480));
-								}
-								
-							} catch (IOException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-							
-														
-							
-							
-						}
-						
-					}					
-									
-					return true;
-					
-				}
-				
-			}
-				
-		}else {
-			// affichage aide
-			aide(sender);
-			new GoToIslandCmd().aide1(sender);
-			return true;
-		}
-		*/
-	}
-/*
-	private void aide3(Player p) {
-		// TODO Auto-generated method stub
-		p.sendMessage(Island.prefix + "§r§c Exlusion du joueur non valide !");
-	}
-
-	private void aide2(Player p, List<String> playerList) {
-		
-		p.sendMessage(Island.prefix + "§r§d Liste des membres de l'île :");
-		
-		for (String string : playerList) {
-			
-			OfflinePlayer t = MainOzone.getInstance().getServer().getOfflinePlayer(UUID.fromString(string));
-			
-			TextComponent msg = new TextComponent("");
-			
-			TextComponent kick = new TextComponent("§c§l[✖]");
-			kick.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/is kick " + string));
-			kick.setHoverEvent( new HoverEvent( HoverEvent.Action.SHOW_TEXT, new ComponentBuilder( "§3§lExclure le joueur" ).create() ) );
-			
-			TextComponent msg1 = new TextComponent("    §r§b▌ " + t.getName());
-			msg1.setBold(true);
-			msg1.setColor(ChatColor.AQUA);
-			
-			msg.addExtra(kick);
-			msg.addExtra(msg1);
-			
-			p.spigot().sendMessage(msg);
-		
 		}
 		
+		return true;
 	}
-
-	private void aide1(Player p) {
-		// TODO Auto-generated method stub
-		p.sendMessage(Island.prefix + "§r§c Il n'y a pas de joueur à kick !");
-	}
-
+	
 	@Override
-	public void aide(Player p) {
-		// TODO Auto-generated method stub
-		p.sendMessage(Island.prefix + "§r§c Vous n'avez pas d'ile !");
+	public List<String> onTabComplete(IslandCommandExecutor exec, Player sender, Command command, String alias, String[] args) {
+		
+		BukkitIslandManager manager = exec.getIslandManager();		
+		List<String> invitersName = new ArrayList<String>();
+		
+		try {
+			
+			Plot island = manager.playerGetPlot(sender);
+			
+			for (String uuid : island.getMembersList()) {
+				
+				invitersName.add(manager.getMain().getServer().getOfflinePlayer(UUID.fromString(uuid)).getName());
+				
+			}
+			
+		} catch (PlayerDoesNotHavePlotException e) {
+			
+			return invitersName;
+			
+		}
+		
+		return invitersName;
+		
 	}
-*/
+	
 }
