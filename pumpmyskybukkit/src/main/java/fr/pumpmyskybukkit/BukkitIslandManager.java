@@ -54,6 +54,29 @@ public class BukkitIslandManager extends PlotManager<OfflinePlayer>{
 		
 		return null;
 		
+	}
+
+	public void pasteIslandSchematic(PlotLocation location) throws DataException, IOException, MaxChangedBlocksException {
+		
+		File file = new File(this.main.getDataFolder(),"ile.schematic");
+		
+		if(!file.exists()) {
+			
+			throw new IOException("Schematic does not exist !");
+			
+		}
+		
+		Location bukkitLocation = new Location(Bukkit.getWorld("Void"), (location.getX() * PlotManagerConstant.PLOT_SIZE) + PlotManagerConstant.PLOT_SIZE / 2 , 60, (location.getX() * PlotManagerConstant.PLOT_SIZE) + PlotManagerConstant.PLOT_SIZE / 2);
+		
+		Vector v = new Vector(bukkitLocation.getBlockX(), bukkitLocation.getBlockY(), bukkitLocation.getBlockZ());
+		
+		EditSession es = WorldEdit.getInstance().getEditSessionFactory().getEditSession(new BukkitWorld(bukkitLocation.getWorld()), WorldEdit.getInstance().getConfiguration().maxChangeLimit);
+		
+		SchematicFormat format = SchematicFormat.getFormat(file);
+		CuboidClipboard cc = format.load(file);
+		
+		cc.paste(es, v, false);		
+		
 	}	
 	
 }
