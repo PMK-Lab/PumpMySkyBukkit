@@ -6,9 +6,14 @@ import java.util.List;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 
+import com.sk89q.worldedit.MaxChangedBlocksException;
+import com.sk89q.worldedit.data.DataException;
+
+import fr.pumpmyplotcore.Plot;
 import fr.pumpmyplotcore.PlotManager.PlotManagerConstant;
 import fr.pumpmyplotcore.exceptions.PlayerAlreadyHavePlotException;
 import fr.pumpmyplotcore.exceptions.PlayerDoesNotHavePlotException;
+import fr.pumpmyskybukkit.BukkitIslandManager;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
@@ -22,7 +27,10 @@ public class CreateIslandCmd implements ISubCommand {
 		
 		try {
 			
-			executor.getIslandManager().playerCreatePlot(sender);
+			BukkitIslandManager manager = executor.getIslandManager();
+			
+			Plot plot = manager.playerCreatePlot(sender);
+			manager.pasteIslandSchematic(plot.toLocation());			
 			
 			sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX +"§d Ile créée avec succès !");
 			new GoToIslandCmd().teleportIslandChatMessage(sender);
@@ -41,6 +49,17 @@ public class CreateIslandCmd implements ISubCommand {
 			
 			e.printStackTrace();
 			sender.sendMessage("§cERROR !!!! Envoyez le message suivant au staff : " + e.getClass().getName() + " || " + e.getMessage());
+			
+		} catch (DataException e) {
+			
+			e.printStackTrace();
+			sender.sendMessage("§cERROR !!!! Envoyez le message suivant au staff : " + e.getClass().getName() + " || " + e.getMessage());
+			
+		} catch (MaxChangedBlocksException e) {
+			
+			e.printStackTrace();
+			sender.sendMessage("§cERROR !!!! Envoyez le message suivant au staff : " + e.getClass().getName() + " || " + e.getMessage());
+			
 		}
 		
 		return true;
