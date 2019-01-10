@@ -1,12 +1,14 @@
 package fr.pumpmyskybukkit;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.OfflinePlayer;
+import org.bukkit.World;
 import org.bukkit.configuration.InvalidConfigurationException;
 
 import com.sk89q.worldedit.CuboidClipboard;
@@ -16,7 +18,15 @@ import com.sk89q.worldedit.Vector;
 import com.sk89q.worldedit.WorldEdit;
 import com.sk89q.worldedit.bukkit.BukkitWorld;
 import com.sk89q.worldedit.data.DataException;
+import com.sk89q.worldedit.extent.clipboard.Clipboard;
+import com.sk89q.worldedit.extent.clipboard.io.ClipboardFormat;
+import com.sk89q.worldedit.function.mask.ExistingBlockMask;
+import com.sk89q.worldedit.function.operation.ForwardExtentCopy;
+import com.sk89q.worldedit.function.operation.Operations;
+import com.sk89q.worldedit.math.transform.AffineTransform;
+import com.sk89q.worldedit.regions.Region;
 import com.sk89q.worldedit.schematic.SchematicFormat;
+import com.sk89q.worldedit.world.registry.WorldData;
 
 import fr.pumpmyplotcore.PlotLocation;
 import fr.pumpmyplotcore.PlotManager;
@@ -66,16 +76,29 @@ public class BukkitIslandManager extends PlotManager<OfflinePlayer>{
 			
 		}
 		
-		Location bukkitLocation = new Location(Bukkit.getWorld("Void"), (location.getX() * PlotManagerConstant.PLOT_SIZE) + PlotManagerConstant.PLOT_SIZE / 2 , 60, (location.getZ() * PlotManagerConstant.PLOT_SIZE) + PlotManagerConstant.PLOT_SIZE / 2);
+		Location bukkitLocation = new Location(Bukkit.getWorld("Void"), (location.getX() * PlotManagerConstant.PLOT_SIZE) - (PlotManagerConstant.PLOT_SIZE / 2) , 60, (location.getZ() * PlotManagerConstant.PLOT_SIZE) - PlotManagerConstant.PLOT_SIZE / 2);
 		
-		Vector v = new Vector(bukkitLocation.getBlockX(), bukkitLocation.getBlockY(), bukkitLocation.getBlockZ());
+		System.out.println(bukkitLocation.getBlockX() + "    " + bukkitLocation.getBlockY() + "    " + bukkitLocation.getBlockZ());
 		
-		EditSession es = WorldEdit.getInstance().getEditSessionFactory().getEditSession(new BukkitWorld(bukkitLocation.getWorld()), WorldEdit.getInstance().getConfiguration().maxChangeLimit);
-		
-		SchematicFormat format = SchematicFormat.getFormat(file);
-		CuboidClipboard cc = format.load(file);
-		
-		cc.paste(es, v, false);		
+		Vector to = new Vector(bukkitLocation.getBlockX(), bukkitLocation.getBlockY(), bukkitLocation.getBlockZ());
+
+		BukkitWorld weWorld = new BukkitWorld(bukkitLocation.getWorld());
+		WorldData worldData = weWorld.getWorldData();
+		Clipboard clipboard = ClipboardFormat.SCHEMATIC.getReader(new FileInputStream(file)).read(worldData);
+		Region region = clipboard.getRegion();
+
+		EditSession extent = WorldEdit.getInstance().getEditSessionFactory().getEditSession(weWorld, -1);
+		AffineTransform transform = new AffineTransform();
+
+		//{ // Uncomment this if you want to rotate the schematic
+//		    transform = transform.rotateY(90); // E.g. rotate 90
+//		    extent = new BlockTransformExtent(clipboard, transform, worldData.getBlockRegistry());
+		//}
+
+		ForwardExtentCopy copy = new ForwardExtentCopy(clipboard, clipboard.getRegion(), clipboard.getOrigin(), extent, to);
+		if (!transform.isIdentity()) copy.setTransform(transform);
+		Operations.completeLegacy(copy);
+		extent.flushQueue();
 		
 	}	
 	
