@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import fr.pumpmyplotcore.PlotManager.PlotManagerConstant;
@@ -14,17 +13,8 @@ import fr.pumpmyplotcore.exceptions.PlayerAlreadyInvitedPlotException;
 import fr.pumpmyplotcore.exceptions.PlayerDoesNotHavePlotException;
 import fr.pumpmyplotcore.exceptions.RestrictActionToPlotOwnerException;
 import fr.pumpmyskybukkit.BukkitIslandManager;
-import fr.pumpmyskybukkit.MainSky;
 
 public class InviteIslandCmd implements ISubCommand, SubTabCompleter {
-
-	private MainSky main;
-
-	public InviteIslandCmd(MainSky main) {
-		
-		this.main = main;
-		
-	}
 	
 	@Override
 	public boolean onSubCommand(IslandCommandExecutor exec, Player sender, Command cmd, List<String> args) {
@@ -89,7 +79,7 @@ public class InviteIslandCmd implements ISubCommand, SubTabCompleter {
 			
 			ArrayList<String> l = new ArrayList<>();
 			
-			for (OfflinePlayer offlinePlayer : this.main.getServer().getOfflinePlayers()) {						
+			for (OfflinePlayer offlinePlayer : exec.getIslandManager().getMain().getServer().getOfflinePlayers()) {						
 				
 				l.add(offlinePlayer.getName());
 				
