@@ -13,6 +13,7 @@ import fr.pumpmyplotcore.exceptions.PlayerDoesNotHavePlotException;
 import fr.pumpmyplotcore.exceptions.PlayerDoesNotInvitedPlotException;
 import fr.pumpmyplotcore.exceptions.RestrictActionToPlotOwnerException;
 import fr.pumpmyskybukkit.BukkitIslandManager;
+import net.md_5.bungee.api.chat.ComponentBuilder;
 
 public class UninviteIslandCmd implements ISubCommand, SubTabCompleter {
 
@@ -21,7 +22,7 @@ public class UninviteIslandCmd implements ISubCommand, SubTabCompleter {
 		
 		if(args.size() != 1) {
 			// invalide syntax			
-			sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Synthaxe invalide : /is uninvite <player>");						
+			sender.spigot().sendMessage(new ComponentBuilder(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Synthaxe invalide : /is uninvite <player>").create());						
 			
 		}else {
 			
@@ -33,37 +34,37 @@ public class UninviteIslandCmd implements ISubCommand, SubTabCompleter {
 				try {
 					
 					manager.playerUninvitePlot(sender,player);
-					sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX +"§d Invitation supprimée avec succès !");
+					sender.spigot().sendMessage(new ComponentBuilder(PlotManagerConstant.PLOT_CHAT_PREFIX +"§d Invitation supprimée avec succès !").create());
 					
 					if(player.isOnline()) {
 						
-						player.getPlayer().sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§d " + sender.getName() + " a supprimé l'invatitation vous invitant à rejoindre son ile !");
+						player.getPlayer().spigot().sendMessage(new ComponentBuilder(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§d " + sender.getName() + " a supprimé l'invatitation vous invitant à rejoindre son ile !").create());
 						
 					}
 					
 				} catch (PlayerDoesNotHavePlotException e) {
 					
-					sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous ne possedez ou ne faite parti d'aucune ile !");
+					sender.spigot().sendMessage(new ComponentBuilder(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous ne possedez ou ne faite parti d'aucune ile !").create());
 					new CreateIslandCmd().createIslandChatMessage(sender);
 					
 				} catch (RestrictActionToPlotOwnerException e) {
 					
-					sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous devez être le créateur de l'ile pour faire cela !");
+					sender.spigot().sendMessage(new ComponentBuilder(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous devez être le créateur de l'ile pour faire cela !").create());
 					
 				} catch (PlayerDoesNotInvitedPlotException e) {
 					
-					sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Ce joueur n'a pas été invité à rejoindre votre ile !");
+					sender.spigot().sendMessage(new ComponentBuilder(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Ce joueur n'a pas été invité à rejoindre votre ile !").create());
 					
 				} catch (IOException e) {
 					
 					e.printStackTrace();
-					sender.sendMessage("§cERROR !!!! Envoyez le message suivant au staff : " + e.getClass().getName() + " || " + e.getMessage());
+					sender.spigot().sendMessage(new ComponentBuilder("§cERROR !!!! Envoyez le message suivant au staff : " + e.getClass().getName() + " || " + e.getMessage()).create());
 					
 				}
 				
 			}else {
 				
-				sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Synthaxe invalide : /is uninvite <player>");
+				sender.spigot().sendMessage(new ComponentBuilder(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Synthaxe invalide : /is uninvite <player>").create());
 				
 			}			
 			
