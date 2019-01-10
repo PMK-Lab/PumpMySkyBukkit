@@ -6,9 +6,9 @@ import java.util.List;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 
-import fr.pumpmyskycore.IslandManager.IslandManagerConstant;
-import fr.pumpmyskycore.exceptions.PlayerAlreadyHaveIslandException;
-import fr.pumpmyskycore.exceptions.PlayerDoesNotHaveIslandException;
+import fr.pumpmyplotcore.PlotManager.PlotManagerConstant;
+import fr.pumpmyplotcore.exceptions.PlayerAlreadyHavePlotException;
+import fr.pumpmyplotcore.exceptions.PlayerDoesNotHavePlotException;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
@@ -22,18 +22,18 @@ public class CreateIslandCmd implements ISubCommand {
 		
 		try {
 			
-			executor.getIslandManager().playerCreateIsland(sender);
+			executor.getIslandManager().playerCreatePlot(sender);
 			
-			sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX +"§d Ile créée avec succès !");
+			sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX +"§d Ile créée avec succès !");
 			new GoToIslandCmd().teleportIslandChatMessage(sender);
 			
 			
-		} catch (PlayerAlreadyHaveIslandException e) {
+		} catch (PlayerAlreadyHavePlotException e) {
 			
-			sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX + "§r§c Vous faites parti / possédez déjà une ile (" + e.getIsland().getName() + " )");
+			sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous faites parti / possédez déjà une ile (" + e.getIsland().getName() + " )");
 			new GoToIslandCmd().teleportIslandChatMessage(sender);
 			
-		} catch (PlayerDoesNotHaveIslandException e) {
+		} catch (PlayerDoesNotHavePlotException e) {
 			
 			sender.sendMessage("§cERROR !!!! Envoyez le message suivant au staff : " + e.getClass().getName() + " || " + e.getPlayerUUID());
 			

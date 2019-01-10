@@ -9,12 +9,12 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import fr.pumpmyplotcore.PlotManager.PlotManagerConstant;
+import fr.pumpmyplotcore.exceptions.PlayerAlreadyInvitedPlotException;
+import fr.pumpmyplotcore.exceptions.PlayerDoesNotHavePlotException;
+import fr.pumpmyplotcore.exceptions.RestrictActionToPlotOwnerException;
 import fr.pumpmyskybukkit.BukkitIslandManager;
 import fr.pumpmyskybukkit.MainSky;
-import fr.pumpmyskycore.IslandManager.IslandManagerConstant;
-import fr.pumpmyskycore.exceptions.PlayerAlreadyInvited;
-import fr.pumpmyskycore.exceptions.PlayerDoesNotHaveIslandException;
-import fr.pumpmyskycore.exceptions.RestrictActionToOwnerIslandException;
 
 public class InviteIslandCmd implements ISubCommand, SubTabCompleter {
 
@@ -31,7 +31,7 @@ public class InviteIslandCmd implements ISubCommand, SubTabCompleter {
 			
 		if(args.size() != 1) {
 			// invalide syntax			
-			sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX + "§r§c Synthaxe invalide : /is uninvite <player>");						
+			sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Synthaxe invalide : /is uninvite <player>");						
 			
 		}else {
 			
@@ -42,26 +42,26 @@ public class InviteIslandCmd implements ISubCommand, SubTabCompleter {
 				
 				try {
 					
-					manager.playerInviteIsland(sender, (Player) player);
+					manager.playerInvitePlot(sender, (Player) player);
 					
 					if(player.isOnline()) {
 						
-						player.getPlayer().sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX + "§r§d " + sender.getName() + " vous a invité à rejoindre son ile !");
+						player.getPlayer().sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§d " + sender.getName() + " vous a invité à rejoindre son ile !");
 						
 					}
 					
-				} catch (PlayerDoesNotHaveIslandException e) {
+				} catch (PlayerDoesNotHavePlotException e) {
 					
-					sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX + "§r§c Vous ne possedez ou ne faite parti d'aucune ile !");
+					sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous ne possedez ou ne faite parti d'aucune ile !");
 					new CreateIslandCmd().createIslandChatMessage(sender);
 					
-				} catch (RestrictActionToOwnerIslandException e) {
+				} catch (RestrictActionToPlotOwnerException e) {
 					
-					sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX + "§r§c Vous devez être le créateur de l'lie pour faire cela !");
+					sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous devez être le créateur de l'lie pour faire cela !");
 					
-				} catch (PlayerAlreadyInvited e) {
+				} catch (PlayerAlreadyInvitedPlotException e) {
 					
-					sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX + "§r§c Vous avez déjà invité ce joueur à rejoindre votre ile !");
+					sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous avez déjà invité ce joueur à rejoindre votre ile !");
 					
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
@@ -70,7 +70,7 @@ public class InviteIslandCmd implements ISubCommand, SubTabCompleter {
 				
 			}else {
 				
-				sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX + "§r§c Synthaxe invalide : /is invite <player>");
+				sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Synthaxe invalide : /is invite <player>");
 				
 			}		
 			

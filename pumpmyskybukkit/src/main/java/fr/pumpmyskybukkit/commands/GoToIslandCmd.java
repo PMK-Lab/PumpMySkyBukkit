@@ -7,10 +7,10 @@ import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 
+import fr.pumpmyplotcore.Plot;
+import fr.pumpmyplotcore.PlotManager.PlotManagerConstant;
+import fr.pumpmyplotcore.exceptions.PlayerDoesNotHavePlotException;
 import fr.pumpmyskybukkit.BukkitIslandManager;
-import fr.pumpmyskycore.Island;
-import fr.pumpmyskycore.IslandManager.IslandManagerConstant;
-import fr.pumpmyskycore.exceptions.PlayerDoesNotHaveIslandException;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
@@ -26,13 +26,13 @@ public class GoToIslandCmd implements ISubCommand{
 		
 		try {
 			
-			Island island = manager.playerGetIsland(sender);
+			Plot island = manager.playerGetPlot(sender);
 			
 			sender.teleport(new Location(Bukkit.getWorld("Void"), island.getHomeX(), island.getHomeY(), island.getHomeZ()));
 			
-		} catch (PlayerDoesNotHaveIslandException e) {
+		} catch (PlayerDoesNotHavePlotException e) {
 			
-			sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX + "§r§c Sans île, vous ne pouvez pas vous téléporter à celle-ci !");
+			sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Sans île, vous ne pouvez pas vous téléporter à celle-ci !");
 			new CreateIslandCmd().createIslandChatMessage(sender);
 			
 		}

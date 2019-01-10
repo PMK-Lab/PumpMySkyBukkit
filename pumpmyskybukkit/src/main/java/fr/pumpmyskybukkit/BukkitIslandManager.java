@@ -7,9 +7,10 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
 
-import fr.pumpmyskycore.IslandManager;
+import fr.pumpmyplotcore.PlotLocation;
+import fr.pumpmyplotcore.PlotManager;
 
-public class BukkitIslandManager extends IslandManager<OfflinePlayer>{
+public class BukkitIslandManager extends PlotManager<OfflinePlayer>{
 
 	protected MainSky main;
 	
@@ -41,7 +42,6 @@ public class BukkitIslandManager extends IslandManager<OfflinePlayer>{
 		
 		return null;
 		
-	}
-	
+	}	
 	
 }

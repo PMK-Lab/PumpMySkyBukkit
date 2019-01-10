@@ -9,9 +9,9 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+import fr.pumpmyplotcore.Plot;
+import fr.pumpmyplotcore.PlotManager.PlotManagerConstant;
 import fr.pumpmyskybukkit.BukkitIslandManager;
-import fr.pumpmyskycore.Island;
-import fr.pumpmyskycore.IslandManager.IslandManagerConstant;
 
 public class JoinIslandCmd implements ISubCommand, SubTabCompleter {
 
@@ -22,13 +22,13 @@ public class JoinIslandCmd implements ISubCommand, SubTabCompleter {
 		
 		if(args.size() != 1) {
 			
-			sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX + "§r§c Synthaxe invalide : /is join <player>");
+			sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Synthaxe invalide : /is join <player>");
 			
 		}else {
 			
-			if(manager.playerHasIsland(sender)) {
+			if(manager.playerHasPlot(sender)) {
 				
-				sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX + "§r§c Vous faites déjà parti d'une ile !");
+				sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous faites déjà parti d'une ile !");
 				new LeaveIslandCmd().leaveIslandChatMessage(sender);
 				
 			}else {
@@ -41,7 +41,7 @@ public class JoinIslandCmd implements ISubCommand, SubTabCompleter {
 					
 				}else {
 					
-					sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX + "§r§c Joueur invalide : /is join <player>");
+					sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Joueur invalide : /is join <player>");
 					
 				}
 				
@@ -59,7 +59,7 @@ public class JoinIslandCmd implements ISubCommand, SubTabCompleter {
 		
 		List<String> invitersName = new ArrayList<String>();
 		
-		for (Island island : manager.getIslandInvites().getPlayerInvites(((Player) sender).getUniqueId())) {
+		for (Plot island : manager.getPlotInvites().getPlayerInvites(((Player) sender).getUniqueId())) {
 			
 			invitersName.add(manager.getMain().getServer().getOfflinePlayer(UUID.fromString(island.getOwner())).getName());
 			

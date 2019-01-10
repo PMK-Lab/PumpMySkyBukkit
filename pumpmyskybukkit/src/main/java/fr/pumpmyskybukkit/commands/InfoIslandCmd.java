@@ -6,10 +6,10 @@ import java.util.UUID;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 
+import fr.pumpmyplotcore.Plot;
+import fr.pumpmyplotcore.PlotManager.PlotManagerConstant;
+import fr.pumpmyplotcore.exceptions.PlayerDoesNotHavePlotException;
 import fr.pumpmyskybukkit.BukkitIslandManager;
-import fr.pumpmyskycore.Island;
-import fr.pumpmyskycore.IslandManager.IslandManagerConstant;
-import fr.pumpmyskycore.exceptions.PlayerDoesNotHaveIslandException;
 
 public class InfoIslandCmd implements ISubCommand {
 
@@ -20,9 +20,9 @@ public class InfoIslandCmd implements ISubCommand {
 		
 		try {
 			
-			Island island = manager.playerGetIsland(sender);
+			Plot island = manager.playerGetPlot(sender);
 			
-			sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX + "§r§f " + island.getName() + "(§r§7§o" + manager.getMain().getServer().getOfflinePlayer(UUID.fromString(island.getOwner())).getName() + "§r§f)");
+			sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§f " + island.getName() + "(§r§7§o" + manager.getMain().getServer().getOfflinePlayer(UUID.fromString(island.getOwner())).getName() + "§r§f)");
 			
 			sender.sendMessage("  §a█§r§f Home( x:" + island.getHomeX() + " | y:" + island.getHomeY() + " | z:" + island.getHomeZ() + " )");
 			
@@ -34,9 +34,9 @@ public class InfoIslandCmd implements ISubCommand {
 				
 			}
 			
-		} catch (PlayerDoesNotHaveIslandException e) {
+		} catch (PlayerDoesNotHavePlotException e) {
 			
-			sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX + "§r§c Vous ne possedez ou ne faite parti d'aucune ile !");
+			sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous ne possedez ou ne faite parti d'aucune ile !");
 			new CreateIslandCmd().createIslandChatMessage(sender);
 			
 		}

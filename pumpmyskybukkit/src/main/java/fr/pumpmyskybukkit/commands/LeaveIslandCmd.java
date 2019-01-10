@@ -6,9 +6,9 @@ import java.util.List;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 
-import fr.pumpmyskycore.IslandManager.IslandManagerConstant;
-import fr.pumpmyskycore.exceptions.IslandIsNotEmptyException;
-import fr.pumpmyskycore.exceptions.PlayerDoesNotHaveIslandException;
+import fr.pumpmyplotcore.PlotManager.PlotManagerConstant;
+import fr.pumpmyplotcore.exceptions.PlayerDoesNotHavePlotException;
+import fr.pumpmyplotcore.exceptions.PlotIsNotEmptyException;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
@@ -22,15 +22,15 @@ public class LeaveIslandCmd implements ISubCommand {
 		
 		try {
 			
-			boolean purge = exec.getIslandManager().playerLeaveIsland(sender);
+			boolean purge = exec.getIslandManager().playerLeavePlot(sender);
 			
 			if(purge) {
 				
-				sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX +"§d Ile détruite !");
+				sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX +"§d Ile détruite !");
 				
 			}else {
 				
-				sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX +"§d Vous avez quitté votre ile !");	
+				sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX +"§d Vous avez quitté votre ile !");	
 				
 			}
 			
@@ -38,14 +38,14 @@ public class LeaveIslandCmd implements ISubCommand {
 			// join message
 			
 			
-		} catch (PlayerDoesNotHaveIslandException e) {
+		} catch (PlayerDoesNotHavePlotException e) {
 			
-			sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX + "§r§c Vous ne possedez ou ne faite parti d'aucune ile !");
+			sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous ne possedez ou ne faite parti d'aucune ile !");
 			new CreateIslandCmd().createIslandChatMessage(sender);
 			
-		} catch (IslandIsNotEmptyException e) {
+		} catch (PlotIsNotEmptyException e) {
 			
-			sender.sendMessage(IslandManagerConstant.ISLAND_CHAT_PREFIX +"§c Des membres sont encore présent dans votre île !");
+			sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX +"§c Des membres sont encore présent dans votre île !");
 			
 		} catch (IOException e) {
 			
