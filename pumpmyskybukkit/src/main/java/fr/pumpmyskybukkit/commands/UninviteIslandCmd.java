@@ -31,11 +31,11 @@ public class UninviteIslandCmd implements ISubCommand, SubTabCompleter {
 				
 				try {
 					
-					manager.playerUninvitePlot(sender, (Player) player);
+					manager.playerUninvitePlot(sender,player);
 					
 					if(player.isOnline()) {
 						
-						player.getPlayer().sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§d " + sender.getName() + " a supprimé l'invatitation qu'il vous inventant à rejoindre son ile !");
+						player.getPlayer().sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§d " + sender.getName() + " a supprimé l'invatitation vous invitant à rejoindre son ile !");
 						
 					}
 					
@@ -53,8 +53,10 @@ public class UninviteIslandCmd implements ISubCommand, SubTabCompleter {
 					sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Ce joueur n'a pas été invité à rejoindre votre ile !");
 					
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
+					sender.sendMessage("§cERROR !!!! Envoyez le message suivant au staff : " + e.getClass().getName() + " || " + e.getMessage());
+					
 				}
 				
 			}else {
