@@ -34,6 +34,13 @@ public class JoinIslandCmd implements ISubCommand, SubTabCompleter {
 			try {
 				
 				manager.playerAcceptInvitePlot(sender, player);
+				sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX +"§d Ile rejoint avec succès !");
+				
+				if(player.isOnline()) {
+					
+					player.getPlayer().sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX +"§d " + sender.getName() + " a rejoint votre ile !");
+					
+				}
 				
 			} catch (PlayerAlreadyHavePlotException e) {
 				

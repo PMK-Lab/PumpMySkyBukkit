@@ -33,6 +33,7 @@ public class InviteIslandCmd implements ISubCommand, SubTabCompleter {
 				try {
 					
 					manager.playerInvitePlot(sender,player);
+					sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX +"§d Joueur invité avec succès !");
 					
 					if(player.isOnline()) {
 						

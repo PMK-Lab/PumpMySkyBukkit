@@ -33,6 +33,7 @@ public class UninviteIslandCmd implements ISubCommand, SubTabCompleter {
 				try {
 					
 					manager.playerUninvitePlot(sender,player);
+					sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX +"§d Invitation supprimée avec succès !");
 					
 					if(player.isOnline()) {
 						

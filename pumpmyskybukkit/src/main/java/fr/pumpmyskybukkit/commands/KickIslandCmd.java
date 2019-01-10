@@ -35,6 +35,16 @@ public class KickIslandCmd implements ISubCommand, SubTabCompleter {
 			try {
 				
 				manager.playerKickPlot(sender, player);
+				sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX +"§d Joueur exclus avec succès !");
+				
+				if(player.isOnline()) {
+					
+					Player p = player.getPlayer();
+					
+					p.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX +"§c Vous avez été exclu de l'ile !");
+					p.performCommand("/spawn");
+					
+				}
 				
 			} catch (PlayerDoesNotHavePlotException e) {
 				
