@@ -13,6 +13,7 @@ import fr.pumpmyskybukkit.commands.IslandCommandExecutor;
 import fr.pumpmyskybukkit.commands.JoinIslandCmd;
 import fr.pumpmyskybukkit.commands.KickIslandCmd;
 import fr.pumpmyskybukkit.commands.LeaveIslandCmd;
+import fr.pumpmyskybukkit.commands.SetHomeIslandCmd;
 import fr.pumpmyskybukkit.commands.UninviteIslandCmd;
 
 public class MainSky extends JavaPlugin{
@@ -51,6 +52,7 @@ public class MainSky extends JavaPlugin{
 		islandCommandExecutor.addSubCommand("join", new JoinIslandCmd());
 		islandCommandExecutor.addSubCommand("kick", new KickIslandCmd());
 		
+		islandCommandExecutor.addSubCommand("sethome", new SetHomeIslandCmd());
 		
 		
 		this.getCommand("island").setExecutor(islandCommandExecutor);

@@ -3,7 +3,6 @@ package fr.pumpmyskybukkit.commands;
 import java.io.IOException;
 import java.util.List;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
@@ -14,11 +13,6 @@ import fr.pumpmyplotcore.exceptions.InvalidePlotHomeLocationException;
 import fr.pumpmyplotcore.exceptions.PlayerDoesNotHavePlotException;
 import fr.pumpmyplotcore.exceptions.RestrictActionToPlotOwnerException;
 import fr.pumpmyskybukkit.BukkitIslandManager;
-import net.md_5.bungee.api.ChatColor;
-import net.md_5.bungee.api.chat.ClickEvent;
-import net.md_5.bungee.api.chat.ComponentBuilder;
-import net.md_5.bungee.api.chat.HoverEvent;
-import net.md_5.bungee.api.chat.TextComponent;
 
 public class SetHomeIslandCmd implements ISubCommand{
 	
@@ -54,33 +48,6 @@ public class SetHomeIslandCmd implements ISubCommand{
 		}	
 		
 		return true;
-		
-	}
-
-	public boolean onSubCommand(IslandCommandExecutor exec,Player p, Command cmd) {
-		// TODO Auto-generated method stub
-		return onSubCommand(exec,p, cmd, null);
-	}
-	
-	public void teleportIslandChatMessage(Player p) {
-		
-		TextComponent ici = new TextComponent("ICI");
-		ici.setBold(true);
-		ici.setColor(ChatColor.DARK_AQUA);
-		ici.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, "/is goto"));
-		
-		ici.setHoverEvent( new HoverEvent( HoverEvent.Action.SHOW_TEXT, new ComponentBuilder( "§3§lTéléportation vers votre île !" ).create() ) );
-		
-		TextComponent msg = new TextComponent("Cliquez ");
-		msg.setColor(ChatColor.AQUA);
-		msg.addExtra(ici);
-		
-		TextComponent msg1 = new TextComponent(" pour vous y téléporter !");
-		msg1.setColor(ChatColor.AQUA);
-		
-		msg.addExtra(msg1);		
-		
-		p.spigot().sendMessage(msg);
 		
 	}
 
