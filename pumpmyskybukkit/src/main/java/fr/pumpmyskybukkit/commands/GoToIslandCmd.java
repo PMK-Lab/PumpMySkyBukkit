@@ -8,6 +8,7 @@ import org.bukkit.command.Command;
 import org.bukkit.entity.Player;
 
 import fr.pumpmyplotcore.Plot;
+import fr.pumpmyplotcore.PlotHomeLocation;
 import fr.pumpmyplotcore.PlotManager.PlotManagerConstant;
 import fr.pumpmyplotcore.exceptions.PlayerDoesNotHavePlotException;
 import fr.pumpmyskybukkit.BukkitIslandManager;
@@ -26,9 +27,9 @@ public class GoToIslandCmd implements ISubCommand{
 		
 		try {
 			
-			Plot island = manager.playerGetPlot(sender);
+			PlotHomeLocation loc = manager.playerGetHomePlot(sender);
 			
-			sender.teleport(new Location(Bukkit.getWorld("Void"), island.getHomeX(), island.getHomeY(), island.getHomeZ()));
+			sender.teleport(new Location(Bukkit.getWorld("Void"), loc.getX(), loc.getY(), loc.getZ()));
 			
 		} catch (PlayerDoesNotHavePlotException e) {
 			
