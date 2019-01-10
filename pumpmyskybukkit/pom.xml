@@ -10,6 +10,21 @@
   	
   	<name>PumpMySkyBukkit</name>
   	
+  	<repositories>
+  	
+  		<repository>
+  			<id>sk89q-snapshots</id>
+ 		 	<url>http://maven.sk89q.com/artifactory/repo/</url>
+  			<releases>
+    			<enabled>true</enabled>
+  			</releases>
+  			<snapshots>
+    			<enabled>true</enabled>
+  			</snapshots>
+		</repository>
+  	
+  	</repositories>
+  	
 	<dependencies>
   			
   		<dependency>
@@ -28,6 +43,12 @@
 			<groupId>fr.pmk_lab</groupId>
 			<artifactId>pumpmyskycore</artifactId>
 			<version>${project.version}</version>
+		</dependency>
+		
+		<dependency>
+  			<groupId>com.sk89q.worldedit</groupId>
+  			<artifactId>worldedit-bukkit</artifactId>
+  			<version>6.1.1-SNAPSHOT</version>
 		</dependency>
   		
   	</dependencies>
