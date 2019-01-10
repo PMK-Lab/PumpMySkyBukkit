@@ -54,7 +54,7 @@ public class JoinIslandCmd implements ISubCommand, SubTabCompleter {
 			
 		}
 		
-		return false;
+		return true;
 	}
 	
 	@Override

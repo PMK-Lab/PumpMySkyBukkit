@@ -10,6 +10,8 @@ import fr.pumpmyskybukkit.commands.GoToIslandCmd;
 import fr.pumpmyskybukkit.commands.InfoIslandCmd;
 import fr.pumpmyskybukkit.commands.InviteIslandCmd;
 import fr.pumpmyskybukkit.commands.IslandCommandExecutor;
+import fr.pumpmyskybukkit.commands.JoinIslandCmd;
+import fr.pumpmyskybukkit.commands.KickIslandCmd;
 import fr.pumpmyskybukkit.commands.LeaveIslandCmd;
 import fr.pumpmyskybukkit.commands.UninviteIslandCmd;
 
@@ -46,8 +48,10 @@ public class MainSky extends JavaPlugin{
 		islandCommandExecutor.addSubCommand("invite", new InviteIslandCmd());
 		islandCommandExecutor.addSubCommand("uninvite", new UninviteIslandCmd());
 		
-		//islandCommandExecutor.addSubCommand("join", new InviteIslandCmd(this));
-		//islandCommandExecutor.addSubCommand("kick", new InviteIslandCmd(this));
+		islandCommandExecutor.addSubCommand("join", new JoinIslandCmd());
+		islandCommandExecutor.addSubCommand("kick", new KickIslandCmd());
+		
+		
 		
 		this.getCommand("island").setExecutor(islandCommandExecutor);
 		
