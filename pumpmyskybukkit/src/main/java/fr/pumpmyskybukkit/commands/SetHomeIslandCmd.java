@@ -13,6 +13,7 @@ import fr.pumpmyplotcore.exceptions.InvalidePlotHomeLocationException;
 import fr.pumpmyplotcore.exceptions.PlayerDoesNotHavePlotException;
 import fr.pumpmyplotcore.exceptions.RestrictActionToPlotOwnerException;
 import fr.pumpmyskybukkit.BukkitIslandManager;
+import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.TextComponent;
 
 public class SetHomeIslandCmd implements ISubCommand{
@@ -27,25 +28,25 @@ public class SetHomeIslandCmd implements ISubCommand{
 		try {
 			
 			manager.playerSetHomePlot(sender, new PlotHomeLocation(location.getX(), location.getY(), location.getZ()));
-			sender.spigot().sendMessage(new TextComponent(PlotManagerConstant.PLOT_CHAT_PREFIX +"§d Point de spawn mis à jour !"));
+			sender.spigot().sendMessage(new ComponentBuilder(PlotManagerConstant.PLOT_CHAT_PREFIX +"§d Point de spawn mis à jour !").create());
 			
 		} catch (PlayerDoesNotHavePlotException e) {
 			
-			sender.spigot().sendMessage(new TextComponent(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous ne possedez ou ne faite parti d'aucune ile !"));
+			sender.spigot().sendMessage(new ComponentBuilder(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous ne possedez ou ne faite parti d'aucune ile !").create());
 			new CreateIslandCmd().createIslandChatMessage(sender);
 			
 		} catch (RestrictActionToPlotOwnerException e) {
 			
-			sender.spigot().sendMessage(new TextComponent(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous devez être le créateur de l'lie pour faire cela !"));
+			sender.spigot().sendMessage(new ComponentBuilder(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous devez être le créateur de l'lie pour faire cela !").create());
 			
 		} catch (IOException e) {
 			
 			e.printStackTrace();
-			sender.spigot().sendMessage(new TextComponent("§cERROR !!!! Envoyez le message suivant au staff : " + e.getClass().getName() + " || " + e.getMessage()));
+			sender.spigot().sendMessage(new ComponentBuilder("§cERROR !!!! Envoyez le message suivant au staff : " + e.getClass().getName() + " || " + e.getMessage()).create());
 			
 		} catch (InvalidePlotHomeLocationException e) {
 			
-			sender.spigot().sendMessage(new TextComponent(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Votre position actuelle ne peut pas etre utilisé comme point de spawn de votre ile !"));
+			sender.spigot().sendMessage(new ComponentBuilder(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Votre position actuelle ne peut pas etre utilisé comme point de spawn de votre ile !").create());
 			
 		}	
 		
