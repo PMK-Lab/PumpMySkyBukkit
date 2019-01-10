@@ -81,12 +81,11 @@ public class InviteIslandCmd implements ISubCommand, SubTabCompleter {
 	}
 
 	@Override
-	public List<String> onTabComplete(IslandCommandExecutor exec, CommandSender sender, Command command, String alias, String[] args) {
+	public List<String> onTabComplete(IslandCommandExecutor exec, Player sender, Command command, String alias, String[] args) {
 		
-		Player player = (Player) sender;
 		BukkitIslandManager manager = exec.getIslandManager();
 		
-		if(manager.playerIsOwner(player)) {
+		if(manager.playerIsOwner(sender)) {
 			
 			ArrayList<String> l = new ArrayList<>();
 			
@@ -99,7 +98,7 @@ public class InviteIslandCmd implements ISubCommand, SubTabCompleter {
 			return l;
 			
 		}else {
-			
+					
 			return new ArrayList<>();
 			
 		}
