@@ -33,33 +33,33 @@ public class CreateIslandCmd implements ISubCommand {
 			Plot plot = manager.playerCreatePlot(sender);
 			manager.pasteIslandSchematic(plot.toLocation());			
 			
-			sender.spigot().sendMessage(new TextComponent(PlotManagerConstant.PLOT_CHAT_PREFIX +"§d Ile créée avec succès !"));
+			sender.spigot().sendMessage(new ComponentBuilder(PlotManagerConstant.PLOT_CHAT_PREFIX +"§d Ile créée avec succès !").create());
 			new GoToIslandCmd().teleportIslandChatMessage(sender);
 			
 			
 		} catch (PlayerAlreadyHavePlotException e) {
 			
-			sender.spigot().sendMessage(new TextComponent(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous faites parti / possédez déjà une ile (" + e.getIsland().getName() + " )"));
+			sender.spigot().sendMessage(new ComponentBuilder(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous faites parti / possédez déjà une ile (" + e.getIsland().getName() + " )").create());
 			new GoToIslandCmd().teleportIslandChatMessage(sender);
 			
 		} catch (PlayerDoesNotHavePlotException e) {
 			
-			sender.spigot().sendMessage(new TextComponent("§cERROR !!!! Envoyez le message suivant au staff : " + e.getClass().getName() + " || " + e.getPlayerUUID()));
+			sender.spigot().sendMessage(new ComponentBuilder("§cERROR !!!! Envoyez le message suivant au staff : " + e.getClass().getName() + " || " + e.getPlayerUUID()).create());
 			
 		} catch (IOException e) {
 			
 			e.printStackTrace();
-			sender.spigot().sendMessage(new TextComponent("§cERROR !!!! Envoyez le message suivant au staff : " + e.getClass().getName() + " || " + e.getMessage()));
+			sender.spigot().sendMessage(new ComponentBuilder("§cERROR !!!! Envoyez le message suivant au staff : " + e.getClass().getName() + " || " + e.getMessage()).create());
 			
 		} catch (DataException e) {
 			
 			e.printStackTrace();
-			sender.spigot().sendMessage(new TextComponent("§cERROR !!!! Envoyez le message suivant au staff : " + e.getClass().getName() + " || " + e.getMessage()));
+			sender.spigot().sendMessage(new ComponentBuilder("§cERROR !!!! Envoyez le message suivant au staff : " + e.getClass().getName() + " || " + e.getMessage()).create());
 			
 		} catch (MaxChangedBlocksException e) {
 			
 			e.printStackTrace();
-			sender.spigot().sendMessage(new TextComponent("§cERROR !!!! Envoyez le message suivant au staff : " + e.getClass().getName() + " || " + e.getMessage()));
+			sender.spigot().sendMessage(new ComponentBuilder("§cERROR !!!! Envoyez le message suivant au staff : " + e.getClass().getName() + " || " + e.getMessage()).create());
 			
 		}
 		
