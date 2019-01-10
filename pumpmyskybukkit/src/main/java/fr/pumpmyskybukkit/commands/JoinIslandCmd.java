@@ -15,6 +15,7 @@ import fr.pumpmyplotcore.exceptions.PlayerAlreadyHavePlotException;
 import fr.pumpmyplotcore.exceptions.PlayerDoesNotHavePlotException;
 import fr.pumpmyplotcore.exceptions.PlayerDoesNotInvitedPlotException;
 import fr.pumpmyskybukkit.BukkitIslandManager;
+import net.md_5.bungee.api.chat.TextComponent;
 
 public class JoinIslandCmd implements ISubCommand, SubTabCompleter {
 
@@ -25,7 +26,7 @@ public class JoinIslandCmd implements ISubCommand, SubTabCompleter {
 		
 		if(args.size() != 1) {
 			
-			sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Synthaxe invalide : /is join <player>");
+			sender.spigot().sendMessage(new TextComponent(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Synthaxe invalide : /is join <player>"));
 			
 		}else {				
 					
@@ -34,28 +35,27 @@ public class JoinIslandCmd implements ISubCommand, SubTabCompleter {
 			try {
 				
 				manager.playerAcceptInvitePlot(sender, player);
-				sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX +"§d Ile rejoint avec succès !");
+				sender.spigot().sendMessage(new TextComponent(PlotManagerConstant.PLOT_CHAT_PREFIX +"§d Ile rejoint avec succès !"));
 				
 				if(player.isOnline()) {
 					
-					player.getPlayer().sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX +"§d " + sender.getName() + " a rejoint votre ile !");
+					player.getPlayer().spigot().sendMessage(new TextComponent(PlotManagerConstant.PLOT_CHAT_PREFIX +"§d " + sender.getName() + " a rejoint votre ile !"));
 					
 				}
 				
 			} catch (PlayerAlreadyHavePlotException e) {
 				
-				sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous faites déjà parti d'une ile !");
+				sender.spigot().sendMessage(new TextComponent(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous faites déjà parti d'une ile !"));
 				new LeaveIslandCmd().leaveIslandChatMessage(sender);
 				
 			} catch (PlayerDoesNotHavePlotException | PlayerDoesNotInvitedPlotException e) {
 				
-				sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Ce joueur ne vous a pas invité !");
-				new LeaveIslandCmd().leaveIslandChatMessage(sender);
+				sender.spigot().sendMessage(new TextComponent(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Ce joueur ne vous a pas invité !"));
 				
 			} catch (IOException e) {
 				
 				e.printStackTrace();
-				sender.sendMessage("§cERROR !!!! Envoyez le message suivant au staff : " + e.getClass().getName() + " || " + e.getMessage());
+				sender.spigot().sendMessage(new TextComponent("§cERROR !!!! Envoyez le message suivant au staff : " + e.getClass().getName() + " || " + e.getMessage()));
 				
 			}			
 			
@@ -71,11 +71,11 @@ public class JoinIslandCmd implements ISubCommand, SubTabCompleter {
 		
 		List<String> invitersName = new ArrayList<String>();
 		
-		for (Plot island : manager.getPlotInvites().getPlayerInvites(sender.getUniqueId())) {
+		/*for (Plot island : manager.getPlotInvites().getPlayerInvites()) {
 			
 			invitersName.add(manager.getMain().getServer().getOfflinePlayer(UUID.fromString(island.getOwner())).getName());
 			
-		}
+		}*/
 		
 		return invitersName;
 		

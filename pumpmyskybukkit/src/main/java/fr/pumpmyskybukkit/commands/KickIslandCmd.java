@@ -15,6 +15,7 @@ import fr.pumpmyplotcore.exceptions.PlayerDoesNotHavePlotException;
 import fr.pumpmyplotcore.exceptions.PlayerIsNotMemberPlotException;
 import fr.pumpmyplotcore.exceptions.RestrictActionToPlotOwnerException;
 import fr.pumpmyskybukkit.BukkitIslandManager;
+import net.md_5.bungee.api.chat.TextComponent;
 
 public class KickIslandCmd implements ISubCommand, SubTabCompleter {
 
@@ -26,7 +27,7 @@ public class KickIslandCmd implements ISubCommand, SubTabCompleter {
 		
 		if(args.size() != 1) {
 			
-			sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Synthaxe invalide : /is join <player>");
+			sender.spigot().sendMessage(new TextComponent(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Synthaxe invalide : /is join <player>"));
 			
 		}else {				
 					
@@ -35,34 +36,34 @@ public class KickIslandCmd implements ISubCommand, SubTabCompleter {
 			try {
 				
 				manager.playerKickPlot(sender, player);
-				sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX +"§d Joueur exclus avec succès !");
+				sender.spigot().sendMessage(new TextComponent(PlotManagerConstant.PLOT_CHAT_PREFIX +"§d Joueur exclus avec succès !"));
 				
 				if(player.isOnline()) {
 					
 					Player p = player.getPlayer();
 					
-					p.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX +"§c Vous avez été exclu de l'ile !");
+					p.spigot().sendMessage(new TextComponent(PlotManagerConstant.PLOT_CHAT_PREFIX +"§c Vous avez été exclu de l'ile !"));
 					p.performCommand("/spawn");
 					
 				}
 				
 			} catch (PlayerDoesNotHavePlotException e) {
 				
-				sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous ne possedez ou ne faite parti d'aucune ile !");
+				sender.spigot().sendMessage(new TextComponent(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous ne possedez ou ne faite parti d'aucune ile !"));
 				new CreateIslandCmd().createIslandChatMessage(sender);
 				
 			} catch (RestrictActionToPlotOwnerException e) {
 				
-				sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous devez être le créateur de l'ile pour faire cela !");
+				sender.spigot().sendMessage(new TextComponent(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous devez être le créateur de l'ile pour faire cela !"));
 				
 			} catch (PlayerIsNotMemberPlotException e) {
 				
-				sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Ce joueur n'est pas membre de votre ile !");
+				sender.spigot().sendMessage(new TextComponent(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Ce joueur n'est pas membre de votre ile !"));
 				
 			} catch (IOException e) {
 				
-				// TODO Auto-generated catch block
 				e.printStackTrace();
+				sender.spigot().sendMessage(new TextComponent("§cERROR !!!! Envoyez le message suivant au staff : " + e.getClass().getName() + " || " + e.getMessage()));
 				
 			}
 			

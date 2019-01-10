@@ -32,7 +32,7 @@ public class GoToIslandCmd implements ISubCommand{
 			
 		} catch (PlayerDoesNotHavePlotException e) {
 			
-			sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Sans île, vous ne pouvez pas vous téléporter à celle-ci !");
+			sender.spigot().sendMessage(new TextComponent(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Sans île, vous ne pouvez pas vous téléporter à celle-ci !"));
 			new CreateIslandCmd().createIslandChatMessage(sender);
 			
 		}

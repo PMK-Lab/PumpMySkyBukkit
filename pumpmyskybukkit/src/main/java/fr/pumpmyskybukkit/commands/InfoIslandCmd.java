@@ -10,6 +10,7 @@ import fr.pumpmyplotcore.Plot;
 import fr.pumpmyplotcore.PlotManager.PlotManagerConstant;
 import fr.pumpmyplotcore.exceptions.PlayerDoesNotHavePlotException;
 import fr.pumpmyskybukkit.BukkitIslandManager;
+import net.md_5.bungee.api.chat.TextComponent;
 
 public class InfoIslandCmd implements ISubCommand {
 
@@ -22,21 +23,21 @@ public class InfoIslandCmd implements ISubCommand {
 			
 			Plot island = manager.playerGetPlot(sender);
 			
-			sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§f " + island.getName() + "(§r§7§o" + manager.getMain().getServer().getOfflinePlayer(UUID.fromString(island.getOwner())).getName() + "§r§f)");
+			sender.spigot().sendMessage(new TextComponent(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§f " + island.getName() + "(§r§7§o" + manager.getMain().getServer().getOfflinePlayer(UUID.fromString(island.getOwner())).getName() + "§r§f)"));
 			
-			sender.sendMessage("  §a█§r§f Home( x:" + island.getHomeX() + " | y:" + island.getHomeY() + " | z:" + island.getHomeZ() + " )");
+			sender.spigot().sendMessage(new TextComponent("  §a█§r§f Home( x:" + island.getHomeX() + " | y:" + island.getHomeY() + " | z:" + island.getHomeZ() + " )"));
 			
-			sender.sendMessage("  §a█§r§f Membres :");
+			sender.spigot().sendMessage(new TextComponent("  §a█§r§f Membres :"));
 			
 			for (String string : island.getMembersList()) {
 				
-				sender.sendMessage("   §a»§r§f" + manager.getMain().getServer().getOfflinePlayer(UUID.fromString(string)).getName());
+				sender.spigot().sendMessage(new TextComponent("   §a»§r§f" + manager.getMain().getServer().getOfflinePlayer(UUID.fromString(string)).getName()));
 				
 			}
 			
 		} catch (PlayerDoesNotHavePlotException e) {
 			
-			sender.sendMessage(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous ne possedez ou ne faite parti d'aucune ile !");
+			sender.spigot().sendMessage(new TextComponent(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous ne possedez ou ne faite parti d'aucune ile !"));
 			new CreateIslandCmd().createIslandChatMessage(sender);
 			
 		}
