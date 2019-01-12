@@ -14,7 +14,6 @@ import fr.pumpmyplotcore.exceptions.PlayerDoesNotHavePlotException;
 import fr.pumpmyplotcore.exceptions.RestrictActionToPlotOwnerException;
 import fr.pumpmyskybukkit.BukkitIslandManager;
 import net.md_5.bungee.api.chat.ComponentBuilder;
-import net.md_5.bungee.api.chat.TextComponent;
 
 public class SetHomeIslandCmd implements ISubCommand{
 	
@@ -27,7 +26,7 @@ public class SetHomeIslandCmd implements ISubCommand{
 		
 		try {
 			
-			manager.playerSetHomePlot(sender, new PlotHomeLocation(location.getX(), location.getY(), location.getZ()));
+			manager.playerSetHomePlot(sender, new PlotHomeLocation(location.getX(), location.getY() + 0.5, location.getZ()));
 			sender.spigot().sendMessage(new ComponentBuilder(PlotManagerConstant.PLOT_CHAT_PREFIX +"§d Point de spawn mis à jour !").create());
 			
 		} catch (PlayerDoesNotHavePlotException e) {
