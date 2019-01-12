@@ -32,33 +32,42 @@ public class JoinIslandCmd implements ISubCommand, SubTabCompleter {
 		}else {				
 					
 			OfflinePlayer player = manager.getOfflinePlayerByName(args.get(0));
+			
+			if(player != null) {
+				
+				try {
+					
+					manager.playerAcceptInvitePlot(sender, player);
+					sender.spigot().sendMessage(new ComponentBuilder(PlotManagerConstant.PLOT_CHAT_PREFIX +"§d Ile rejoint avec succès !").create());
+					
+					if(player.isOnline()) {
 						
-			try {
-				
-				manager.playerAcceptInvitePlot(sender, player);
-				sender.spigot().sendMessage(new ComponentBuilder(PlotManagerConstant.PLOT_CHAT_PREFIX +"§d Ile rejoint avec succès !").create());
-				
-				if(player.isOnline()) {
+						player.getPlayer().spigot().sendMessage(new ComponentBuilder(PlotManagerConstant.PLOT_CHAT_PREFIX +"§d " + sender.getName() + " a rejoint votre ile !").create());
+						
+					}
 					
-					player.getPlayer().spigot().sendMessage(new ComponentBuilder(PlotManagerConstant.PLOT_CHAT_PREFIX +"§d " + sender.getName() + " a rejoint votre ile !").create());
+				} catch (PlayerAlreadyHavePlotException e) {
 					
-				}
+					sender.spigot().sendMessage(new ComponentBuilder(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous faites déjà parti d'une ile !").create());
+					new LeaveIslandCmd().leaveIslandChatMessage(sender);
+					
+				} catch (PlayerDoesNotHavePlotException | PlayerDoesNotInvitedPlotException e) {
+					
+					sender.spigot().sendMessage(new ComponentBuilder(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Ce joueur ne vous a pas invité !").create());
+					
+				} catch (IOException e) {
+					
+					e.printStackTrace();
+					sender.spigot().sendMessage(new ComponentBuilder("§cERROR !!!! Envoyez le message suivant au staff : " + e.getClass().getName() + " || " + e.getMessage()).create());
+					
+				}				
 				
-			} catch (PlayerAlreadyHavePlotException e) {
+			}else {
 				
-				sender.spigot().sendMessage(new ComponentBuilder(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Vous faites déjà parti d'une ile !").create());
-				new LeaveIslandCmd().leaveIslandChatMessage(sender);
+				sender.spigot().sendMessage(new ComponentBuilder(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Joueur invalide : /is join <player>").create());				
 				
-			} catch (PlayerDoesNotHavePlotException | PlayerDoesNotInvitedPlotException e) {
-				
-				sender.spigot().sendMessage(new ComponentBuilder(PlotManagerConstant.PLOT_CHAT_PREFIX + "§r§c Ce joueur ne vous a pas invité !").create());
-				
-			} catch (IOException e) {
-				
-				e.printStackTrace();
-				sender.spigot().sendMessage(new ComponentBuilder("§cERROR !!!! Envoyez le message suivant au staff : " + e.getClass().getName() + " || " + e.getMessage()).create());
-				
-			}			
+			}		
+			
 			
 		}
 		
