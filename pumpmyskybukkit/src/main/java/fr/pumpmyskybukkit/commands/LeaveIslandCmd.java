@@ -35,7 +35,7 @@ public class LeaveIslandCmd implements ISubCommand {
 			}
 			
 			new CreateIslandCmd().createIslandChatMessage(sender);
-			// join message
+			sender.performCommand("/spawn");
 			
 			
 		} catch (PlayerDoesNotHavePlotException e) {
